@@ -1,0 +1,199 @@
+<div id="beachPayCharts"></div>
+<script>
+    require.config({
+        paths: {
+            echarts: './dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/dark',
+            'echarts/chart/map',
+            'echarts/chart/line',
+            'echarts/chart/bar',
+            'echarts/chart/pie',
+            'echarts/chart/funnel'
+        ],
+        function (ec,theme) {
+            var option={
+                title : {
+                    text: '滩涂治理完成率',
+                    x:'center',
+                    y:'top'
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    x:'4%',
+                    y:'12%',
+                    data:['非法占用海滩','非法修、造、拆船舶监管','非法占用、破坏海岸线','','违禁渔具','"三无"渔船','入海排污口','农药清潭行']
+                },
+                toolbox: {
+                    show : false,
+                    orient:'vertical',
+                    x:'right',
+                    y:'center',
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: true},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                grid:{
+                    x:'7%',
+                    y:'26%',
+                    x2:36,
+                    y2:40
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['嘉兴','宁波','舟山','台州','温州']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+//                                 name:'百分百',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'非法占用海滩',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'非法修、造、拆船舶监管',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'非法占用、破坏海岸线',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'违禁渔具',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'"三无"渔船',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'入海排污口',
+                        type:'line',
+                        stack: '总量',
+                        showAllSymbol:true,
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'农药清潭行',
+                        type:'line',
+                        stack: '总量',
+                        data:[45,56,67,78,89,89],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+            var chart2=ec.init(document.getElementById("beachPayCharts"),theme);
+            chart2.setOption(option);
+            window.onresize = chart2.resize;
+        })
+</script>
