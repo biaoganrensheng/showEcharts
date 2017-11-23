@@ -83,11 +83,15 @@
         }
 
         /* settings */
+        .setting-icon{
+            outline:none;
+        }
         .setting-icon:hover {
             background: #3498DB;
             width: 130px;
             line-height: 60px;
             color: #fff;
+            outline:none;
         }
 
         .setting-icon:hover i {
@@ -183,17 +187,18 @@
                                                 <label class="sr-only" for="province1">Province</label>
                                                 <select class="form-control" id="province1"></select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" style="box-sizing: border-box;width:48%;">
                                                 <label class="sr-only" for="city2">City</label>
-                                                <select class="form-control" id="city2"></select>
+                                                <select class="form-control" id="city2" style="width:90%;margin-left: 10%;"></select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" style="box-sizing: border-box;width:48%;">
                                                 <label class="sr-only" for="district3">District</label>
-                                                <select class="form-control" id="district3"></select>
+                                                <select class="form-control" id="district3" style="width:90%;margin-left:5%;"></select>
                                             </div>
-                                            <div class="form-group has-default has-feedback">
+
+                                            <div class="form-group has-default has-feedback" style="margin-top: 10px;">
                                                 <div class="row" style="margin:1% 0;">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" style="padding-right: 0;">
                                                         <label class="control-label"
                                                                style="margin-top:14%;">开始日期</label>
                                                     </div>
@@ -206,11 +211,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin:1% 0;">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" style="padding-right: 0;">
                                                         <label class="control-label"
-                                                               style="margin-top:14%;">结束日期</label>
+                                                               style="margin-top:20%;">结束日期</label>
                                                     </div>
-                                                    <div class="col-md-8 arrowPositionParent" style="padding-left: 0;">
+                                                    <div class="col-md-8 arrowPositionParent" style="padding-left: 0;margin-top: 10px;">
                                                         <input name="endTime" type="text" id="endTime"
                                                                class="form-control date-picker" id="endTime"
                                                                style="width:100%;padding-right:0;"
@@ -219,7 +224,7 @@
                                                     </div>
                                                     <button type="button" class="btn btn-success btn-md btn-block"
                                                             id="searchBtn"
-                                                            style="width:90%;height:40px;margin:0 auto;margin-top:20%;">
+                                                            style="width:90%;height:40px;margin:0 auto;margin-top:22%;">
                                                         <i class="glyphicon glyphicon-search"
                                                            style="margin-right:6px;"></i>查 询
                                                     </button>
@@ -240,9 +245,9 @@
                         <div class="layH" id="Datacontainer" style="width:100%;position: relative;">
                             <iframe id='changeTab' src="" frameborder="0" width="100%" height="100%" src=""
                                     frameborder="0"></iframe>
-                            <a href="javascript:;" class="setting-icon">
+                            <span  class="setting-icon">
                                 <i class="glyphicon glyphicon-resize-full changeIcon"></i>
-                            </a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -450,7 +455,7 @@
      */
     var bindItemChangeEvent = function () {
         if ($(".list-group").hasClass("oneClick")) {
-            $(this).addClass('animated pulse active').siblings("a").removeClass('animated pulse active');
+            $(this).addClass('active').siblings("a").removeClass('active');
             var _targetDOM = $(this).find("[type='hidden']");
             var _url = _targetDOM.val();
             var _data = _targetDOM.data("params");
@@ -462,7 +467,7 @@
         } else {
             $(".setting-icon").trigger("click");
             $(".list-group").addClass("oneClick");
-            $(this).addClass('animated pulse active').siblings("a").removeClass('animated pulse active');
+            $(this).addClass('active').siblings("a").removeClass('active');
             var _targetDOM = $(this).find("[type='hidden']");
             var _url = _targetDOM.val();
             var _data = _targetDOM.data("params");
@@ -593,10 +598,10 @@
             $('#startTime').datetimepicker('setEndDate', endTime);
         });
 
-        $("#distpicker").distpicker({
+       $("#distpicker").distpicker({
             province: "浙江省",
-            city: '---- 所在市 ----',
-            district: '---- 所在区 ----',
+            city: '--所在市--',
+            district: '--所在区--',
             autoSelect: false,
             placeholder: true
         });
@@ -617,7 +622,10 @@
         });
         $("#searchBtn").on('click', bindSearchEvent);
         $(".chartPulic").on('click', bindSetThemeEvent);
-
+// 鼠标移入item 加放大的动效
+        $(".silderBar-panel").on("mouseenter mouseleave",".list-group-item",function (e) {
+            $(this).toggleClass("animated pulse");
+        });
     })
 </script>
 </body>

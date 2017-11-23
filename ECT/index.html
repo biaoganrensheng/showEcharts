@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="天地图"/>
+    <title>天地图</title>
+    <script type="text/javascript" src="http://api.tianditu.com/api?v=4.0"></script>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="data/coast.js"></script>
+    <style>
+         *{
+                margin: 0;
+                padding: 0;
+            }
+            body,html{
+                width:100%;
+                height:100%;
+                margin:0;
+                font-family:"Microsoft YaHei";
+                position: relative;
+                }
+            #mapDiv{
+                width:100%;
+                height:100%;
+            }
+    </style>
+</head>
+<body onLoad="onLoad()">
+    <div id="mapDiv" ></div>
+</body>
+<script>
+var map;
+var zoom = 11;
+function onLoad() {
+    //初始化地图对象
+    map = new T.Map("mapDiv");
+    //设置显示地图的中心点和级别
+    map.centerAndZoom(new T.LngLat(121.22844,28.17826), zoom);
+    // 缩放到一定层级时改换底图，现设置为12级改变是为了保证玉环影像好看
+    map.addEventListener('zoomend',function(){
+            if(map.getZoom()<=12){
+                map.setMapType(TMAP_NORMAL_MAP);
+            }
+            else{
+                map.setMapType(TMAP_HYBRID_MAP);
+            }
+    });
+    //绘制玉环市范围
+    addCity('玉环市','#fff');
+    var paramName = getUrlParam('type');
+    addMarker(illData,paramName);
+
+
+
+/*
+     * 解析URL
+     * @param {name} String 参数名称
+*/
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
+        var r = window.location.search.substr(1).match(reg); 
+        if (r != null) return unescape(r[2]); 
+        return null; 
+    }
+/*
+     * 地图添加点状覆盖物
+     * @param {name} String
+*/
+    function addMarker(data,name){
+        var arrayObj = [];
+        $.each(data,function(j,item){{
+            if(name==item.type){
+                var coastPoints = [];
+                $.each(item.point,function(i,val){
+                    coastPoints.push(new T.LngLat(val[0],val[1]));
+                })
+                var icon = new T.Icon({
+                    iconUrl:item.iconUrl,
+                    iconSize:new T.Point(30,30),
+                    iconAnchor:new T.Point(3,3),
+                })
+                $.each(coastPoints,function(i,val){
+                    var myMarker = new T.Marker(val,{icon:icon});
+                    arrayObj.push(myMarker);
+                    // map.addOverLay(myMarker);
+                })
+            }
+        }});
+        var markers = new T.MarkerClusterer(map,{markers:arrayObj});
+    }
+/*
+     * 通过传入省市名称获取行政区范围
+     * @param {areaName} String 省市名称
+     * @param {style} String 行政区对应颜色
+*/
+    function addCity(areaName,style){
+        var LS =  new T.LocalSearch(map,{
+            onSearchComplete:function(data){
+                var allArea = data.getArea().points;
+                $.each(allArea,function(j,item){
+                    var thisRegion = item.region.split(',');
+                    var newRegion = [];
+                    $.each(thisRegion,function(i,val){
+                        newRegion.push(val.split(' ').map(function(v){return Number(v);}));
+                    })
+                    var allPoints = [];
+                    $.each(newRegion,function(i,val){
+                        allPoints.push(new T.LngLat(val[0], val[1]));
+                    })
+                    var polygon = new T.Polygon(allPoints,{
+                        color: "red", 
+                        weight: 2, 
+                        opacity: 0.5, 
+                        fillColor: style, 
+                        fillOpacity: 0.001,
+                        lineStyle:"dashed",
+                    });
+                    //向地图上添加面
+                    map.addOverLay(polygon);
+                })
+            }
+        });
+        LS.search(areaName,1);
+    }
+}
+
+</script>
+</html>
