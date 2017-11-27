@@ -1,0 +1,144 @@
+<div id="vl_2" ></div>
+<script>
+
+    require.config({
+        paths: {
+            echarts: './dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/heliantus',
+            'echarts/chart/map',
+            'echarts/chart/line',
+            'echarts/chart/bar',
+            'echarts/chart/pie',
+            'echarts/chart/scatter',
+            'echarts/chart/funnel'
+        ],
+        function (ec,theme) {
+            var option={
+                title:{
+                    text: '渔船出海情况',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    formatter:'{b} 出海数</br>{a}:{c}</br>{a1}:{c1}</br>{a2}:{c2}</br>{a3}:{c3}</br>{a4}:{c4}</br>{a5}:{c5}</br>{a6}:{c6}</br>{a7}:{c7}</br>{a8}:{c8}</br>{a9}:{c9}</br>{a10}:{c10}'
+                },
+                legend: {
+//                    orient:'vertical',
+                    x:'center',
+                    y:'bottom',
+                    data:['刺网','围网','拖网','拖虾','张网','钓具','','耙刺','陷阱','笼壶','杂渔具','其他']
+                },
+                toolbox: {
+                    show : false,
+                    orient: 'vertical',
+                    x:'right',
+                    y:'center',
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                grid:{
+                    x:'14%',
+                    y:'10%',
+                    x2:40,
+                    y2:80
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name:'艘',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'刺网',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'围网',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'拖网',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'拖虾',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'张网',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'钓具',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'耙刺',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'陷阱',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'笼壶',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'杂渔具',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    },
+                    {
+                        name:'其他',
+                        type:'line',
+                        stack: '总量',
+                        data:[120,132,101,134,90,230,210,56,78,90,66,78]
+                    }
+                ]
+            };
+            var villagesChart2=ec.init(document.getElementById("vl_2"),theme);
+            villagesChart2.setOption(option);
+            window.onresize = villagesChart2.resize;
+
+        })
+</script>

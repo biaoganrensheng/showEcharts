@@ -1,0 +1,128 @@
+<div id="tz_3" ></div>
+<script>
+    require.config({
+        paths: {
+            echarts: './dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/dark',
+            'echarts/chart/map',
+            'echarts/chart/line',
+            'echarts/chart/bar',
+            'echarts/chart/pie',
+            'echarts/chart/funnel'
+        ],
+        function (ec,theme) {
+            var option={
+                title : {
+                    text: '问题修复整治',
+                    x:'20',
+                    top:'top'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        type: 'shadow',
+                        lineStyle: {
+                            color: '#48b',
+                            width: 2,
+                            type: 'solid'
+                        },
+                        crossStyle: {
+                            color: '#1e90ff',
+                            width: 1,
+                            type: 'dashed'
+                        },
+                        shadowStyle: {
+                            color: 'rgba(150,150,150,0.3)',
+                            width: 'auto',
+                            type: 'default'
+                        }
+                    }
+                },
+                legend: {
+                    x:'right',
+                    y:'10',
+                    data:['岸线修复计划','岸线修复完成','','滩面污染修复计划','滩面污染修复完成']
+
+                },
+                toolbox: {
+                    show : false,
+                    orient:'vertical',
+                    x:'right',
+                    y:'center',
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: true},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                grid:{
+                    x:'17%',
+                    y:'26%',
+                    x2:36,
+                    y2:30
+
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data :["嘉兴","宁波","舟山","台州","温州"]
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name:"数量",
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'岸线修复计划',
+                        type:'bar',
+                        data: [250,600,700,890,330],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            precision:2,
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'岸线修复完成',
+                        type:'bar',
+                        data:[250,600,700,890,330]
+
+                    },
+                    {
+                        name:'滩面污染修复计划',
+                        type:'bar',
+                        data: [250,600,700,890,330]
+
+                    },
+                    {
+                        name:'滩面污染修复完成',
+                        type:'bar',
+                        data:[250,600,700,890,330]
+
+                    }
+                ]
+            };
+            var tanZhangChart3=ec.init(document.getElementById("tz_3"),theme);
+            tanZhangChart3.setOption(option);
+            window.onresize = tanZhangChart3.resize;
+        })
+</script>

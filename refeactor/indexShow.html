@@ -65,9 +65,7 @@
             border-top: 1px solid #c2c2c2;
         }
 
-        #beachSearchCharts, #beachBuildCharts {
-            border-top-color: transparent;
-        }
+
 
         .silderBar {
             background-color: #000;
@@ -81,7 +79,12 @@
             width:100%;
             height:100%;
         }
-
+        .changeContainerLeft>div,.changeContainerRight>div{
+            display:none;
+        }
+        .changeContainerLeft>div.active,.changeContainerRight>div.active{
+            display:block;
+        }
         /* settings */
         .setting-icon{
             outline:none;
@@ -154,6 +157,10 @@
         .mCS-dark-thin > .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
             background: rgba(236, 8, 8, 0.75);
         }
+
+        .changeContainerLeft>div>div:first-child>.chartPulic, .changeContainerRight>div>div:first-child>.chartPulic{
+            border-top: none;
+        }
     </style>
 </head>
 
@@ -164,15 +171,47 @@
     </div>
     <div class="main">
         <div class="row page-container">
-            <div class="col-md-3 clearContainer" >
-                <div class="row" >
-                    <div class="chartPulic leftItem" data-url="chart1.html"></div>
+            <div class="col-md-3 changeContainerLeft" id="changeContainerLeft">
+              <div data-sort="tanZhangChart">
+                    <div class="row" >
+                        <div class="chartPulic leftItem" data-url="tanZhangChart1.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem specialItem1" data-url="tanZhangChart2.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic leftItem" data-url="tanZhangChart3.html"></div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="chartPulic leftItem specialItem1" data-url="chart2.html"></div>
+               <div data-sort="waterProductChart">
+                    <div class="row" >
+                        <div class="chartPulic leftItem" data-url="waterProductChart1.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem " data-url="waterProductChart2.html"></div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div  class="chartPulic leftItem" data-url="chart3.html"></div>
+               <div data-sort="postJobChart">
+                     <div class="row" >
+                        <div class="chartPulic leftItem" data-url="postJobChart1.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem specialItem1" data-url="postJobChart2.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic leftItem" data-url="postJobChart3.html"></div>
+                    </div>
+                </div>
+               <div data-sort="villagesChart">
+                     <div class="row" >
+                        <div class="chartPulic leftItem" data-url="villagesChart1.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem specialItem1" data-url="villagesChart2.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic leftItem" data-url="villagesChart3.html"></div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 areaChange">
@@ -252,15 +291,47 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 clearContainer">
-                <div class="row">
-                    <div class="chartPulic rightItem" data-url="chart4.html"></div>
+            <div class="col-md-3 changeContainerRight" id="changeContainerRight">
+               <div  data-sort="tanZhangChart">
+                    <div class="row">
+                        <div class="chartPulic rightItem" data-url="tanZhangChart4.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic rightItem specialItem2" data-url="tanZhangChart5.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic rightItem" data-url="tanZhangChart6.html"></div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div  class="chartPulic rightItem specialItem2" data-url="chart5.html"></div>
+               <div  data-sort="waterProductChart">
+                    <div class="row" >
+                        <div class="chartPulic leftItem" data-url="waterProductChart3.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem" data-url="waterProductChart4.html"></div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="chartPulic rightItem" data-url="chart6.html"></div>
+               <div  data-sort="postJobChart">
+                    <div class="row" >
+                        <div class="chartPulic leftItem" data-url="postJobChart4.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem specialItem1" data-url="postJobChart5.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic leftItem" data-url="postJobChart6.html"></div>
+                    </div>
+                </div>
+               <div  data-sort="villagesChart">
+                    <div class="row" >
+                        <div class="chartPulic leftItem" data-url="villagesChart4.html"></div>
+                    </div>
+                    <div class="row">
+                        <div class="chartPulic leftItem specialItem1" data-url="villagesChart5.html"></div>
+                    </div>
+                    <div class="row">
+                        <div  class="chartPulic leftItem" data-url="villagesChart6.html"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -281,15 +352,14 @@
 <script id="silderBarControl" type="text/html">
     <%if(res==1){%>
     <div class="list-group mytpl">
-        <%for(var i=0;i
-        <list.length
+        <%for(var i=0;i<list.length
         ;i++){%>
-        <a href="javascript:;" class="list-group-item">
+        <a href="javascript:;" class="list-group-item" data-name="<%=list[i].name%>">
             <%=list[i].content%>
             <%if(list[i].badge){%>
             <span class="badge">
                   <%=list[i].badge%>
-              </span>
+            </span>
             <%}%>
             <input type="hidden" value="<%=list[i].url%>" data-params="<%:=list[i].params%>">
         </a>
@@ -298,8 +368,141 @@
     <%}%>
 </script>
 
+
 <script>
-    var iframeObj;
+    var tz_flag=true,wp_flag=true,pj_flag=true,vl_flag=true;
+    /*var data1={
+        res:'1',
+        arror:'left',
+        list:[
+           {
+               name:'tanZhangChart',
+               childLoadChart:[
+                   {
+                    page:'tanZhangChart1.html'
+                   },
+                   {
+                    page:'tanZhangChart2.html',
+                    spe:'specialItem1'
+                   },
+                   {
+                    page:'tanZhangChart3.html'
+                   }]
+           },
+           {
+               name:'waterProductChart',
+               childLoadChart:[
+                   {
+                       page:'waterProductChart1.html'
+                   },
+                   {
+                       page:'waterProductChart2.html',
+                       spe:'specialItem1'
+                   }]
+           },
+           {
+               name:'postJobChart',
+               childLoadChart:[
+                   {
+                       page:'postJobChart1.html'
+                   },
+                   {
+                       page:'postJobChart2.html',
+                       spe:'specialItem1'
+                   },
+                   {
+                       page:'postJobChart3.html'
+                   }]
+           },
+           {
+               name:'villagesChart',
+               childLoadChart:[
+                   {
+                       page:'villagesChart1.html'
+                   },
+                   {
+                       page:'villagesChart2.html',
+                       spe:'specialItem1'
+                   },
+                   {
+                       page:'villagesChart3.html'
+                   }]
+           }
+       ]
+    };
+    var data2={
+        res:1,
+        arror:'right',
+       list:[
+           {
+               name:'tanZhangChart',
+               childLoadChart:[
+
+                   {
+                    page:'tanZhangChart4.html'
+                   },
+                   {
+                    page:'tanZhangChart5.html',
+                    spe:'specialItem2'
+                   },
+                   {
+                    page:'tanZhangChart6.html'
+                   }]
+           },
+           {
+               name:'waterProductChart',
+               childLoadChart:[
+
+                   {
+                       page:'waterProductChart3.html'
+                   },
+                   {
+                       page:'waterProductChart4.html'
+                   }]
+           },
+           {
+               name:'postJobChart',
+               childLoadChart:[
+
+                   {
+                       page:'postJobChart4.html'
+                   },
+                   {
+                       page:'postJobChart5.html',
+                       spe:'specialItem2'
+                   },
+                   {
+                       page:'postJobChart6.html'
+                   }]
+           },
+           {
+               name:'villagesChart',
+               childLoadChart:[
+                   {
+                       page:'villagesChart1.html'
+                   },
+                   {
+                       page:'villagesChart2.html',
+                       spe:'specialItem1'
+                   },
+                   {
+                       page:'villagesChart3.html'
+                   },
+                   {
+                       page:'villagesChart4.html'
+                   },
+                   {
+                       page:'villagesChart5.html',
+                       spe:'specialItem2'
+                   },
+                   {
+                       page:'villagesChart6.html'
+                   }]
+           }
+       ]
+    };*/
+/*    BaiDuTpl("initChart", "changeContainerLeft", data1);*/
+   // BaiDuTpl("initChart", "changeContainerRight", data2);
     function addControlBar() {
         var _baseH = $(".page-container").height();
         var _panelH = (_baseH - ($("#panelHeight").outerHeight())) * .9;
@@ -326,35 +529,88 @@
 
     }
 
-    function resetHeight(dom, part, per, sliceleft, sliceright) {
+    function resetHeight(dom,pardom,part, per, sliceleft, sliceright) {
+
         var _baseH = $(".page-container").height();
         sliceleft = sliceleft || 3;
         sliceright = sliceright || 3;
         if (part == "left") {
             var _domPer = per || 0.4, _elsePer = ((1 - per) / (sliceleft - 1)) || 0.3;
             var _domH = _baseH * _domPer, _elseHeight = _baseH * _elsePer;
-            $(".leftItem").height(_elseHeight);
+            $(pardom+" .leftItem").height(_elseHeight);
             $(dom).height(_domH);
         } else if (part == "right") {
             var _domPer = per || 0.4, _elsePer = ((1 - per) / (sliceright - 1)) || 0.3;
             var _domH = _baseH * _domPer, _elseHeight = _baseH * _elsePer;
-            $(".rightItem").height(_elseHeight);
+            $(pardom+" .rightItem").height(_elseHeight);
             $(dom).height(_domH);
         } else {
             var _heightL = (_baseH) / sliceleft + 'px';
             var _heightR = (_baseH) / sliceright + 'px';
-            $(".leftItem").height(_heightL);
-            $(".rightItem").height(_heightR);
+            $(pardom+" .leftItem").height(_heightL);
+            $(pardom+" .rightItem").height(_heightR);
         }
 
     }
 
     function BaiDuTpl(tplId, domId, data) {
         var bt = baidu.template;
-        var html = bt('silderBarControl', data);
-        document.getElementById('silderBar-panel').innerHTML = html;
+        var html = bt(tplId, data);
+        document.getElementById(domId).innerHTML = html;
     }
+    function loadChart(_class){
+        switch (_class){
+            case "tanZhangChart":
+                resetHeight(".specialItem1",'.active','left', 0.46);
+                resetHeight(".specialItem2",'.active', 'right', '0.4');
+                if(tz_flag){
+                    $(".active .chartPulic").each(function (i, v) {
+                        var _dataUrl=$(v).data('url');
+                        var _url = "./tpl/"+_dataUrl;
+                        $(v).load(_url);
+                    });
+                    tz_flag=false;
+                }
+                break;
+            case "waterProductChart":
+                resetHeight(".specialItem1",'.active', 'left', 0.5,2);
+                resetHeight(".specialItem2", '.active','right', '0.5',2);
+                if(wp_flag){
+                    $(".active .chartPulic").each(function (i, v) {
+                        var _dataUrl=$(v).data('url');
+                        var _url = "./tpl/"+_dataUrl;
+                        $(v).load(_url);
+                    });
+                    wp_flag=false;
+                }
+                break;
+            case "postJobChart":
+                resetHeight(".specialItem1",'.active','left', 0.46);
+                resetHeight(".specialItem2",'.active', 'right', '0.4');
+                if(pj_flag){
+                    $(".active .chartPulic").each(function (i, v) {
+                        var _dataUrl=$(v).data('url');
+                        var _url = "./tpl/"+_dataUrl;
+                        $(v).load(_url);
+                    });
+                    pj_flag=false;
+                }
+                break;
+            case "villagesChart":
+                resetHeight(".specialItem1",'.active','left', 0.46);
+                resetHeight(".specialItem2",'.active', 'right', '0.4');
+                if(vl_flag){
+                    $(".active .chartPulic").each(function (i, v) {
+                        var _dataUrl=$(v).data('url');
+                        var _url = "./tpl/"+_dataUrl;
+                        $(v).load(_url);
+                    });
+                    vl_flag=false;
+                }
+                break;
+        }
 
+    }
     /**
      *
      * 工具类*/
@@ -438,7 +694,7 @@
             $(".areaChange").removeClass("col-md-12").addClass("col-md-6");
             $(".changeIcon").removeClass("glyphicon-resize-small").addClass('glyphicon-resize-full');
             $(this).removeClass("flag");
-            $(".list-group").removeClass("oneClick");
+           // $(".list-group").removeClass("oneClick");
         } else {
             $(this).addClass("flag");
             $(".page-container>div").not(".areaChange").map(function (i, v) {
@@ -454,64 +710,66 @@
      * 2. 点击controlbar 的切换事件（注意可以是iframe）;
      */
     var bindItemChangeEvent = function () {
-        $(".clearContainer").html(null);
-        $(".clearContainer").append('<div class="row">')
-       /* if ($(".list-group").hasClass("oneClick")) {
-            $(this).addClass('active').siblings("a").removeClass('active');
-            var _targetDOM = $(this).find("[type='hidden']");
-            var _url = _targetDOM.val();
-            var _data = _targetDOM.data("params");
-            iframeObj = {
-                name: TL_getParamValue("name", _data),
-                age: TL_getParamValue("age", _data)
-            };
-            $("#changeTab").attr("src", _url);
-        } else {
-            $(".setting-icon").trigger("click");
-            $(".list-group").addClass("oneClick");
-            $(this).addClass('active').siblings("a").removeClass('active');
-            var _targetDOM = $(this).find("[type='hidden']");
-            var _url = _targetDOM.val();
-            var _data = _targetDOM.data("params");
-            iframeObj = {
-                name: TL_getParamValue("name", _data),
-                age: TL_getParamValue("age", _data)
-            };
-            $("#changeTab").attr("src", _url);
-        }*/
+        $(this).addClass('active').siblings("a").removeClass('active');
+        var _targetDOM = $(this).find("[type='hidden']");
+        var _url = _targetDOM.val();
+        var _data = _targetDOM.data("params");
+        iframeObj = {
+            name: TL_getParamValue("name", _data),
+            age: TL_getParamValue("age", _data)
+        };
+        $("#changeTab").attr("src", _url);
+       var targetSort=$(this).data("name");
+       $(".changeContainerLeft>div").removeClass("active");
+       $(".changeContainerRight>div").removeClass("active");
+       $(".changeContainerLeft div[data-sort='"+targetSort+"']").addClass("active");
+       $(".changeContainerRight div[data-sort='"+targetSort+"']").addClass("active");
+        loadChart(targetSort);
     };
     /**
      * 3.查询更新图表
      * */
-    var renderEvent=function(renderType,obj){
-       var renderChartArr=(function(param){
-            var chartNum=$(".chartPulic").size();
-            var rederChart=[];
-            if(param=="all"){
-                $(".chartPulic").each(function (i, v) {
-                    var _dataUrl=$(v).data('url');
-                    rederChart.push(_dataUrl);
-                });
-            }else if(typeof param=="object"&&param.length<chartNum){
-               param.forEach(function(v){
-                   var _dataUrl=$(".chartPulic").eq(v).data('url');
-                    rederChart.push(_dataUrl);
-                })
+    var renderEvent = function(renderType,obj){
+        var renderChartArr=(function(param){
+            var renderChartObj={};
+            for(var key in param){
+                var _val=param[key];
+                var chartNum= $("[data-sort='"+key+"'] .chartPulic").size();
+                if(_val=="all"){
+                    var rederChart=[];
+                    $("[data-sort='"+key+"'] .chartPulic").each(function (i, v) {
+                        var _dataUrl=$(v).data('url');
+                        rederChart.push(_dataUrl);
+                        renderChartObj[key]=rederChart;
+                    });
+                }else if(typeof _val=="object"&&_val.length<chartNum){
+                    var rederChart=[]
+                    _val.forEach(function(v){
+                        var _dataUrl=$("[data-sort='"+key+"'] .chartPulic").eq(v).data('url');
+                        rederChart.push(_dataUrl);
+                    });
+                    renderChartObj[key]=rederChart;
+                }
             }
-            return rederChart;
+            return renderChartObj;
         })(renderType) ;
-        renderChartArr.forEach(function(v,i){
-            var url="./tpl/"+v;
-            //携带参数,重新load
-            //$("div[data-url='"+v+"']").load(url,obj);
-        })
+        console.log(renderChartArr);
+        for(var key in renderChartArr){
+            var targetRenderChart=renderChartArr[key];
+            targetRenderChart.forEach(function(v,i){
+                var url="./tpl/"+v;
+                //携带参数,重新load
+                $("[data-sort='"+key+"'] div[data-url='"+v+"']").load(url,obj);
+            })
+        }
     };
-
     var bindSearchEvent = function () {
         var city = $("#city2").val(),
             district = $("#district3").val(),
             startTime = $("#startTime").val(),
-            endTime = $("#endTime").val();
+            endTime = $("#endTime").val(),
+            sortArr =[],
+            renderChartName={};
         if (1) {
             var obj = {
                 city: city,
@@ -520,29 +778,22 @@
                 endTime: endTime
             };
  // 调用ajax 和后台交互
-            renderEvent([0],obj);
+          $(".changeContainerLeft>div").each(function(i,v){
+              var _v=$(v).data("sort");
+              if(sortArr.indexOf(_v)==-1){
+                  sortArr.push(_v);
+              }
+          });
+            renderChartName[sortArr[0]]="all";
+            renderChartName[sortArr[1]]=[0,1,3];
+            renderChartName[sortArr[2]]=[2,3,4];
+            renderChartName[sortArr[3]]=[0,3,5];
+            renderEvent(renderChartName,obj);
         } else {
             ms.msg("请输入完整的查询条件", 2, 2000);
         }
     };
-    /**
-     * 4.主题切换
-     * */
-    var bindSetThemeEvent = function () {
-        $(".chartPulic").each(function (i, v) {
-            var _dataUrl=$(v).data('url');
-            var _url = "./tpl/"+_dataUrl;
-            if ($(v).hasClass("flag")) {
-                $(v).load(_url);
-                $(v).removeClass('flag');
-                return false;
-            }
-        });
-        var _dataUrl=$(this).data('url');
-        var _url = "./tpl/"+_dataUrl;
-        $(this).load("./tpl/chart7.html");//模拟的加载路径（自己）
-        $(this).addClass('flag');
-    };
+
     $(function () {
         /**
          * 绑定具体的函数操作
@@ -599,35 +850,30 @@
             var endTime = e.date;
             $('#startTime').datetimepicker('setEndDate', endTime);
         });
-
-       $("#distpicker").distpicker({
+        $("#distpicker").distpicker({
             province: "浙江省",
             city: '--所在市--',
             district: '--所在区--',
             autoSelect: false,
             placeholder: true
         });
-
-
-        resetHeight(".specialItem1", 'left', 0.46);
-        resetHeight(".specialItem2", 'right', '0.4');
         addControlBar();
 
         $(".setting-icon").on("click", bindScaleIconEvent);
-
         $(".silderBar-panel").on('click', "a.list-group-item", bindItemChangeEvent);
+
+        setTimeout(function () {
+            $(".mytpl>a").eq(0).trigger("click");
+        },50);
+
 //  调用load 函数加载配置项
-        $(".chartPulic").each(function (i, v) {
-            var _dataUrl=$(v).data('url');
-            var _url = "./tpl/"+_dataUrl;
-            $(v).load(_url);
-        });
         $("#searchBtn").on('click', bindSearchEvent);
-        $(".chartPulic").on('click', bindSetThemeEvent);
 // 鼠标移入item 加放大的动效
         $(".silderBar-panel").on("mouseenter mouseleave",".list-group-item",function (e) {
             $(this).toggleClass("animated pulse");
         });
+
+
     })
 </script>
 </body>

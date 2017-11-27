@@ -1,0 +1,91 @@
+<div id="tz_6" ></div>
+<script>
+    require.config({
+        paths: {
+            echarts: './dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/dark',
+            'echarts/chart/map',
+            'echarts/chart/line',
+            'echarts/chart/bar',
+            'echarts/chart/pie',
+            'echarts/chart/funnel'
+        ],
+        function (ec,theme) {
+            var option={
+                title : {
+                    text: '滩涂底数完整率'
+
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: "{a} <br/>{b} : {c}%"
+                },
+                legend: {
+                    data:['完整率'],
+                    orient : 'vertical',
+                    x : 'center',
+                    y:'30'
+                },
+                toolbox: {
+                    show : false,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                grid:{
+                    x:'12%',
+                    y:'20%',
+                    x2:36,
+                    y2:30
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ["嘉兴","宁波","舟山","台州","温州"]
+
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name:'百分比',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'完整率',
+                        type:'line',
+                        data:[11, 56, 45, 90, 34],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            precision:2,
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+
+                ]
+            };
+            var tanZhangChart6=ec.init(document.getElementById("tz_6"),theme);
+            tanZhangChart6.setOption(option);
+            window.onresize = tanZhangChart6.resize;
+        })
+</script>
