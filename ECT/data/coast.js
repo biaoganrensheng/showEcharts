@@ -127,7 +127,7 @@ var illData = [{
 	],
 }, {
 	'type': 'illboat',
-	'iconUrl': 'images/boat.png',
+	'iconUrl': 'images/boatIcon.png',
 	'point': [
 		[121.51514, 28.09582],
 		[121.36276, 28.10223],
