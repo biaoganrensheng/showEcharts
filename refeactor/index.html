@@ -432,7 +432,7 @@
             case "tanZhangChart":
                 resetHeight(".specialItem1",'.active','left', 0.46);
                 resetHeight(".specialItem2",'.active', 'right', '0.4');
-                if(tz_flag){
+                if(tz_flag&&(!$(".setting-icon").hasClass("flag"))){
                     $(".active .chartPulic").each(function (i, v) {
                         var _dataUrl=$(v).data('url');
                         var _url = "./tpl/"+_dataUrl;
@@ -444,7 +444,7 @@
             case "waterProductChart":
                 resetHeight(".specialItem1",'.active', 'left', 0.5,2);
                 resetHeight(".specialItem2", '.active','right', '0.5',2);
-                if(wp_flag){
+                if(wp_flag&&(!$(".setting-icon").hasClass("flag"))){
                     $(".active .chartPulic").each(function (i, v) {
                         var _dataUrl=$(v).data('url');
                         var _url = "./tpl/"+_dataUrl;
@@ -456,7 +456,7 @@
             case "postJobChart":
                 resetHeight(".specialItem1",'.active','left', 0.33);
                 resetHeight(".specialItem2",'.active', 'right', '0.33');
-                if(pj_flag){
+                if(pj_flag&&(!$(".setting-icon").hasClass("flag"))){
                     $(".active .chartPulic").each(function (i, v) {
                         var _dataUrl=$(v).data('url');
                         var _url = "./tpl/"+_dataUrl;
@@ -468,7 +468,7 @@
             case "villagesChart":
                 resetHeight(".specialItem1",'.active','left', 0.33);
                 resetHeight(".specialItem2",'.active', 'right', '0.33');
-                if(vl_flag){
+                if(vl_flag&&(!$(".setting-icon").hasClass("flag"))){
                     $(".active .chartPulic").each(function (i, v) {
                         var _dataUrl=$(v).data('url');
                         var _url = "./tpl/"+_dataUrl;
@@ -563,6 +563,11 @@
             $(".areaChange").removeClass("col-md-12").addClass("col-md-6");
             $(".changeIcon").removeClass("glyphicon-resize-small").addClass('glyphicon-resize-full');
             $(this).removeClass("flag");
+            $(".mytpl a").each(function(i,v){
+                if($(v).hasClass("active")){
+                    $(v).trigger("click");
+                }
+            })
         } else {
             $(this).addClass("flag");
             $(".page-container>div").not(".areaChange").map(function (i, v) {

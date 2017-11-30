@@ -1,4 +1,4 @@
-<div id="tz_2"></div>
+<div id="tz_2" ></div>
 <script>
     require.config({
         paths: {
@@ -17,177 +17,311 @@
         ],
         function (ec,theme) {
             var option={
+                legend: {
+                    x : 'center',
+                    y:'12%',
+                    data : ['嘉兴完成率','宁波完成率',"舟山完成率",'台州完成率','温州完成率']
+                },
                 title : {
-                    text: '滩涂治理完成率',
-                    x:'center',
-                    y:'top'
+                    text: '各地区公示牌完成进度',
+                    x: 'center',
+                    y:'10'
                 },
                 tooltip : {
-                    trigger: 'axis'
-                },
-                legend: {
-                    x:'10%',
-                    y:'12%',
-                    data:['非法占用海滩','非法修、造、拆船舶监管','非法占用、破坏海岸线','','违禁渔具','"三无"渔船','入海排污口','农药清潭行']
+                    trigger: 'item',
+                    formatter:function(params){
+                        if(params["1"]=="other"){
+                            return '完成率'+(100-params['2'])+'%';
+                        }else{
+                            return '完成率'+params['2']+'%';
+                        }
+                    }
                 },
                 toolbox: {
                     show : false,
-                    orient:'vertical',
-                    x:'right',
-                    y:'center',
                     feature : {
-                        mark : {show: true},
-                        dataView : {show: true, readOnly: true},
-                        magicType : {show: true, type: ['line', 'bar']},
+                        dataView : {show: true, readOnly:true},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    width: '20%',
+                                    height: '30%',
+                                    itemStyle : {
+                                        normal : {
+                                            label : {
+                                                formatter : function (params){
+                                                    return 'other\n' + params.value + '%\n'
+                                                },
+                                                textStyle: {
+                                                    baseline : 'middle'
+                                                }
+                                            }
+                                        },
+                                    }
+                                }
+                            }
+                        },
                         restore : {show: true},
                         saveAsImage : {show: true}
                     }
                 },
-                calculable : true,
-                grid:{
-                    x:'17%',
-                    y:'26%',
-                    x2:36,
-                    y2:40
-                },
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : ['嘉兴','宁波','舟山','台州','温州']
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value',
-                        boundaryGap:[0,0.02]
-                    }
-                ],
                 series : [
                     {
-                        name:'非法占用海滩',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
+                        type : 'pie',
+                        center : ['20%', '40%'],
+                        radius : ['20%', '32%'],
+                        x: '0%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
                         },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data : [
+                            {name:'other', value:46, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'嘉兴完成率', value:54,itemStyle :{
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
                     },
                     {
-                        name:'非法修、造、拆船舶监管',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
+                        type : 'pie',
+                        center : ['50%', '40%'],
+                        radius : ['20%', '32%'],
+                        x:'20%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
                         },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data : [
+                            {name:'other', value:56, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'宁波完成率', value:44,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
                     },
                     {
-                        name:'非法占用、破坏海岸线',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
+                        type : 'pie',
+                        center : ['80%', '40%'],
+                        radius :  ['20%', '32%'],
+                        x:'40%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
                         },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data : [
+                            {name:'other', value:33, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'舟山完成率', value:67,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
                     },
                     {
-                        name:'违禁渔具',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
+                        type : 'pie',
+                        center : ['34%', '78%'],
+                        radius :  ['20%', '32%'],
+                        x:'60%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
                         },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data : [
+                            {name:'other', value:70, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'温州完成率', value:30,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
                     },
                     {
-                        name:'"三无"渔船',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
+                        type : 'pie',
+                        center : ['68%', '78%'],
+                        radius :  ['20%', '32%'],
+                        x:'80%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
                         },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
-                    },
-                    {
-                        name:'入海排污口',
-                        type:'line',
-                        stack: '总量',
-                        showAllSymbol:true,
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
-                        },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
-                    },
-                    {
-                        name:'农药清潭行',
-                        type:'line',
-                        stack: '总量',
-                        data:[45,56,67,78,89,89],
-                        markPoint : {
-                            data : [
-                                {type : 'max', name: '最大值'},
-                                {type : 'min', name: '最小值'}
-                            ]
-                        },
-                        markLine : {
-                            data : [
-                                {type : 'average', name: '平均值'}
-                            ]
-                        }
+                        data : [
+                            {name:'other', value:40, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'台州完成率', value:60,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
                     }
                 ]
             };

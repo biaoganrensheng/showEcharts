@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>船员迁徙</title>
+    <title>渔船情况</title>
     <meta name="keywords" content="艋顺,艋顺科技，艋顺科技公司">
     <meta name="description" content="艋顺,艋顺科技，艋顺科技公司">
     <link rel="shortcut icon" href="logo.ico" type="images/x-icon"/>
@@ -102,15 +102,15 @@
                 return nameArr;
             };
             var pointArr2=pointArr();
-            var option=   {
+            var option= {
                 legend: {
                     orient: 'vertical',
                     x:'left',
                     data:['船员情况'],
                     textStyle:{
                         color:'#fff'
-                    }
-
+                    },
+                    show:false
                 },
                 tooltip : {
                     trigger: 'item',
@@ -183,10 +183,10 @@
                         geoCoord:geoCoord()
                     },
                     {
-                        name: 'Top10(渔船人数)',
+                        name: 'Top15(渔船人数)',
                         type: 'map',
                         mapType: 'none',
-                        data: boatName(),
+                        data: [],
                         markPoint : {
                             symbol:'emptyCircle',
                             symbolSize : function (v){
@@ -206,9 +206,6 @@
                     }
                 ]
             };
-            /*var postJobChartShow=ec.init(document.getElementById("pj_show"),theme);
-            postJobChartShow.setOption(option);
-            window.onresize = postJobChartShow.resize;*/
             var myChart = BMapExt.initECharts(container);
             window.onresize = myChart.onresize;
             BMapExt.setOption(option);
