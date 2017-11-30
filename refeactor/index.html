@@ -430,7 +430,7 @@
     function loadChart(_class){
         switch (_class){
             case "tanZhangChart":
-                resetHeight(".specialItem1",'.active','left', 0.46);
+                resetHeight(".specialItem1",'.active','left', 0.34);
                 resetHeight(".specialItem2",'.active', 'right', '0.4');
                 if(tz_flag&&(!$(".setting-icon").hasClass("flag"))){
                     $(".active .chartPulic").each(function (i, v) {
@@ -577,9 +577,12 @@
             $(".silderBarContent").removeClass("col-md-8").addClass('col-md-10');
             $(".areaChange").removeClass("col-md-6").addClass("col-md-12");
             $(".changeIcon").removeClass("glyphicon-resize-full").addClass('glyphicon-resize-small');
-            if($("[data-name='villagesChart']").hasClass("active")){
-                $("#changeTab").attr("src", 'mapT/zjycShow.html');
-            }
+            $(".mytpl a").each(function(i,v){
+                var targetUrl=$(v).find("input").val();
+                if($(v).hasClass("active")){
+                    $("#changeTab").attr("src", targetUrl);
+                }
+            })
         }
     };
     /**
@@ -738,9 +741,6 @@
         $(".setting-icon").on("click", bindScaleIconEvent);
         $(".silderBar-panel").on('click', "a.list-group-item", bindItemChangeEvent);
 
-        setTimeout(function () {
-            $(".mytpl>a").eq(0).trigger("click");
-        },50);
 
 //  调用load 函数加载配置项
         $("#searchBtn").on('click', bindSearchEvent);
@@ -748,9 +748,10 @@
         $(".silderBar-panel").on("mouseenter mouseleave",".list-group-item",function (e) {
             $(this).toggleClass("animated pulse");
         });
-
-
-    })
+    });
+    $(window).load(function(){
+        $(".mytpl>a").eq(0).trigger("click");
+    });
 </script>
 </body>
 </html>
