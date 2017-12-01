@@ -20,7 +20,7 @@
         function (ec,theme) {
             var option={
                 title:{
-                    text:"船员职务",
+                    text:"船员职务(2014年度)",
                     x:'center'
                 },
                 tooltip : {
@@ -152,6 +152,36 @@
             var villagesChart5=ec.init(document.getElementById("vl_5"),theme);
             villagesChart5.setOption(option);
             window.onresize = villagesChart5.resize;
+            //            模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
 
+            var time=2014;
+           var timer_villagesChart5=setInterval(function(){
+                var changeData=option.series;
+                option.title.text="船员职务("+(time<2017?++time:time=2014)+"年度)";
+                for(var i=0;i<changeData.length;i++){
+                    changeData[i].data=newData(5,100,500);
+                }
+                villagesChart5.setOption(option,true);
+            },1600);
+          $("#vl_5").hover(function () {
+              clearInterval(timer_villagesChart5);
+          },function(){
+              var timer_villagesChart5=setInterval(function(){
+                  var changeData=option.series;
+                  option.title.text="船员职务("+(time<2017?++time:time=2014)+"年度)";
+                  for(var i=0;i<changeData.length;i++){
+                      changeData[i].data=newData(5,100,500);
+                  }
+                  villagesChart5.setOption(option,true);
+              },1600);
+          })
         })
 </script>

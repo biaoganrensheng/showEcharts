@@ -383,7 +383,7 @@
         TL_ajax(url, {userName: userName}, 'GET')
             .done(function (data) {
                 /*模板渲染*/
-                BaiDuTpl("silderBarControl", "silderBar-panel", data);
+               BaiDuTpl("silderBarControl", "silderBar-panel", data);
                 /*初始化滚动条插件*/
                 $("#silderBar-panel").mCustomScrollbar({
                     scrollButtons: {
@@ -737,7 +737,6 @@
             placeholder: true
         });
         addControlBar();
-
         $(".setting-icon").on("click", bindScaleIconEvent);
         $(".silderBar-panel").on('click', "a.list-group-item", bindItemChangeEvent);
 
@@ -748,11 +747,15 @@
         $(".silderBar-panel").on("mouseenter mouseleave",".list-group-item",function (e) {
             $(this).toggleClass("animated pulse");
         });
+        //模板渲染完成后，触发第一个item 项
+        var timer=setInterval(function(){
+            if($(".list-group-item").size()==4){
+                $(".mytpl>a").eq(0).trigger("click");
+                clearInterval(timer);
+            }
+        },20);
     });
-//模板渲染完成后，触发第一个item 项
-    $(window).load(function(){
-        $(".mytpl>a").eq(0).trigger("click");
-    });
+
 </script>
 </body>
 </html>

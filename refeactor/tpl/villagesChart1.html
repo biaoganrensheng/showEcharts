@@ -20,7 +20,7 @@
         function (ec,theme) {
             var option={
                 title: {
-                    text: '渔船等级分类',
+                    text: '渔船等级分类(2008年度)',
                     x:'center'
                 },
                 tooltip : {
@@ -43,7 +43,7 @@
                     }
                 },
                 grid:{
-                    x:'12%',
+                    x:'14%',
                     y:'20%',
                     x2:40,
                     y2:40
@@ -91,5 +91,20 @@
             var villagesChart1=ec.init(document.getElementById("vl_1"),theme);
             villagesChart1.setOption(option);
             window.onresize = villagesChart1.resize;
+            //            模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2008;
+            setInterval(function(){
+                option.title.text="渔船等级分类("+(time<2017?++time:time=2008)+"年度)";
+                option.series[0].data=newData(4,100,2000);
+                villagesChart1.setOption(option,true);
+            },1500)
         })
 </script>
