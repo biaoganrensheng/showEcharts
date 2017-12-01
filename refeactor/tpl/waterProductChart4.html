@@ -46,7 +46,7 @@
                     formatter:'{b}<br>{a}:{c}吨'
                 },
                 legend: {
-                    data:['2017年'],
+                    data:['2008年'],
                     x:'80%',
                     y:'4%'
                 },
@@ -77,12 +77,12 @@
                 yAxis : [
                     {
                         type : 'category',
-                        data : ['贝类','藻类','甲壳类','鱼类','其他品种','总量']
+                        data : ['贝类','藻类','甲壳类','鱼类','其他','总量']
                     }
                 ],
                 series : [
                     {
-                        name:'2017年',
+                        name:"2008年",
                         itemStyle:{
                             normal: {
                                 color: function(params) {
@@ -94,13 +94,31 @@
                             }
                         },
                         type:'bar',
-                        data:[18203, 23489, 29034, 104970, 131744, 630230,300000]
+                        data:[100, 344, 678, 890, 567, 980]
                     }
                 ]
             };
             var waterProductChart4=ec.init(document.getElementById("wp_4"),'macarons');
             waterProductChart4.setOption(option);
             window.onresize = waterProductChart4.resize;
-
+            //            模拟动态数据
+            var newData=function(item,min,max,sort){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                sort&&dataNEW.sort(function(a,b){
+                   return a-b;
+                });
+                return dataNEW
+            };
+            var time=2008;
+            setInterval(function(){
+                option.legend.data=[(time<2017?++time:time=2008)+"年"];
+                option.series[0].name=(time)+"年";
+                option.series[0].data=newData(6,100,1000,'sort');
+                waterProductChart4.setOption(option,true);
+            },1800)
         })
 </script>

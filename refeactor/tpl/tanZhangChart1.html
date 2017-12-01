@@ -18,7 +18,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '滩涂巡查完成率',
+                    text: '滩涂巡查完成率(2008年度)',
                     x:'center',
                     y:'10'
                 },
@@ -160,6 +160,20 @@
             var tanZhangChart1=ec.init(document.getElementById("tz_1"),theme);
             tanZhangChart1.setOption(option);
             window.onresize = tanZhangChart1.resize;
-
+//            模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2008;
+            setInterval(function(){
+                option.title.text="滩涂巡查完成率("+(time<2017?++time:time=2008)+"年度)";
+                option.series[0].data=newData();
+                tanZhangChart1.setOption(option,true);
+            },1500)
         })
 </script>

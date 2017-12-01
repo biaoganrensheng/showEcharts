@@ -21,7 +21,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '作业类型招聘求职',
+                    text: '作业类型招聘求职(2012年度)',
                     x: 'center'
                 },
                 tooltip : {
@@ -33,7 +33,8 @@
                 },
                 legend: {
                     data:['招聘', '求职'],
-                    x:'left'
+                    x:'left',
+                    y:'24'
                 },
                 grid:{
                     x:'12%',
@@ -81,6 +82,23 @@
             var postJobChart4=ec.init(document.getElementById("pj_4"),theme);
             postJobChart4.setOption(option);
             window.onresize = postJobChart4.resize;
-
+            //            模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2012;
+            setInterval(function(){
+                var changeData=option.series;
+                option.title.text="作业类型招聘求职("+(time<2017?++time:time=2012)+"年度)";
+                for(var i=0;i<changeData.length;i++){
+                    changeData[i].data=newData(11,100,1000);
+                }
+                postJobChart4.setOption(option,true);
+            },1600)
         })
 </script>

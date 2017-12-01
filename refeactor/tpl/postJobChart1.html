@@ -34,7 +34,7 @@
                     y:'8%'
                 },
                 grid:{
-                    x:'10%',
+                    x:'12%',
                     y:'20%',
                     x2:40,
                     y2:40
@@ -56,7 +56,7 @@
                     {
                         type : 'category',
                         boundaryGap : false,
-                        data : ['11.16','11.17','11.18','11.19','11.20','11.21','11.22']
+                        data : getWeekTime()
                     }
                 ],
                 yAxis : [
@@ -110,5 +110,16 @@
             postJobChart1.setOption(option);
             window.onresize = postJobChart1.resize;
 
+            function getWeekTime()
+            {
+                var dateArr=[];
+                var today = new Date();
+                for(var i=6;i>=0;i--){
+                    var date = new Date(today.getTime() - (i * 24 * 60 * 60 * 1000));
+                    var sdate=date.getMonth()+1+"-"+date.getDate();
+                    dateArr.push(sdate);
+                }
+                return dateArr;
+            }
         })
 </script>

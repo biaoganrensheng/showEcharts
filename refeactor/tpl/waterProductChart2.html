@@ -19,7 +19,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '病起用药',
+                    text: '病起用药(2008年度)',
                     x:'center',
                     y:'20'
                 },
@@ -47,8 +47,8 @@
                 },
                 legend: {
                     data:['病起','用药'],
-                    x:'center',
-                    y:'bottom'
+                    x:'right',
+                    y:'top'
                 },
                 toolbox: {
                     show : false,
@@ -62,8 +62,8 @@
                 },
                 grid:{
                     x:60,
-                    y:'14%',
-                    x2:64,
+                    y:'18%',
+                    x2:44,
                     y2:60
                 },
                 calculable : true,
@@ -77,10 +77,10 @@
                 yAxis : [
                     {
                         type : 'value',
-                        name:'用药起数',
+                        name:'用药起数(起)',
                         boundaryGap:[0,0.02],
                         axisLabel : {
-                            formatter: '{value} 起'
+                            formatter: '{value}'
                         }
                     },
                     {
@@ -88,9 +88,9 @@
                         position:'right',
                         show:true,
                         boundaryGap:[0,0.02],
-                        name:'用药量数',
+                        name:'用药量数(千克)',
                         axisLabel : {
-                            formatter: '{value} 千克'
+                            formatter: '{value}'
                         }
                     }
                 ],
@@ -133,6 +133,21 @@
             var waterProductChart2=ec.init(document.getElementById("wp_2"),'macarons');
             waterProductChart2.setOption(option);
             window.onresize = waterProductChart2.resize;
-
+//            模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2008;
+            setInterval(function(){
+                option.title.text="病起用药("+(time<2017?++time:time=2008)+"年度)";
+                option.series[0].data=newData(12,100,300);
+                option.series[1].data=newData(12,100,1000);
+                waterProductChart2.setOption(option,true);
+            },2500)
         })
 </script>

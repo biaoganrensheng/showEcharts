@@ -18,7 +18,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '滩长组织建设',
+                    text: '滩长组织建设(2008年度)',
                     x:'center',
                     y:'10'
                 },
@@ -93,5 +93,23 @@
             var tanZhangChart4=ec.init(document.getElementById("tz_4"),theme);
             tanZhangChart4.setOption(option);
             window.onresize = tanZhangChart4.resize;
+// 模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2008;
+            setInterval(function(){
+                var changeData=option.series;
+                option.title.text="(滩长组织建设"+(time<2017?++time:time=2008)+"年度)";
+                for(var i=0;i<changeData.length;i++){
+                    changeData[i].data=newData();
+                }
+                tanZhangChart4.setOption(option,true);
+            },1800)
         })
 </script>
