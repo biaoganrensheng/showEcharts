@@ -103,13 +103,25 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_tanZhangChart4=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="(滩长组织建设"+(time<2017?++time:time=2008)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData();
                 }
                 tanZhangChart4.setOption(option,true);
-            },1800)
+            },1800);
+            $("#tz_4").hover(function () {
+                clearInterval(timer_tanZhangChart4);
+            },function(){
+                timer_tanZhangChart4=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="(滩长组织建设"+(time<2017?++time:time=2008)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData();
+                    }
+                    tanZhangChart4.setOption(option,true);
+                },1800);
+            })
         })
 </script>

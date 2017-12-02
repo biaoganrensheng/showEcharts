@@ -114,13 +114,25 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_postJobChart2=setInterval(function(){
                 var changeData=option.series;
                 option.title.text=(time<2017?++time:time=2008)+"年度招聘求职";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData(12,100,3000);
                 }
                 postJobChart2.setOption(option,true);
-            },1600)
+            },1600);
+            $("#pj_2").hover(function () {
+                clearInterval(timer_postJobChart2);
+            },function(){
+                timer_postJobChart2=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text=(time<2017?++time:time=2008)+"年度招聘求职";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData(12,100,3000);
+                    }
+                    postJobChart2.setOption(option,true);
+                },1600);
+            })
         })
 </script>

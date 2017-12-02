@@ -98,13 +98,25 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_tanZhangChart6=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="(滩涂底数完整率"+(time<2017?++time:time=2008)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData();
                 }
                 tanZhangChart6.setOption(option,true);
-            },2000)
+            },2000);
+            $("#tz_6").hover(function () {
+                clearInterval(timer_tanZhangChart6);
+            },function(){
+                timer_tanZhangChart6=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="(滩涂底数完整率"+(time<2017?++time:time=2008)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData();
+                    }
+                    tanZhangChart6.setOption(option,true);
+                },2000);
+            })
         })
 </script>

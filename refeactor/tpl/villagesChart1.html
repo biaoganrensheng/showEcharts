@@ -101,10 +101,19 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_villagesChart1=setInterval(function(){
                 option.title.text="渔船等级分类("+(time<2017?++time:time=2008)+"年度)";
                 option.series[0].data=newData(4,100,2000);
                 villagesChart1.setOption(option,true);
-            },1500)
+            },1500);
+            $("#vl_1").hover(function () {
+                clearInterval(timer_villagesChart1);
+            },function(){
+                timer_villagesChart1=setInterval(function(){
+                    option.title.text="渔船等级分类("+(time<2017?++time:time=2008)+"年度)";
+                    option.series[0].data=newData(4,100,2000);
+                    villagesChart1.setOption(option,true);
+                },1500);
+            })
         })
 </script>

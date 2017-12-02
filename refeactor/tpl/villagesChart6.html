@@ -110,13 +110,25 @@
                 return dataNEW
             };
             var time=2014;
-            setInterval(function(){
+            var timer_villagesChart6=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="作业区域招聘求职("+(time<2017?++time:time=2014)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData(5,100,500);
                 }
                 villagesChart6.setOption(option,true);
-            },1600)
+            },1600);
+            $("#vl_6").hover(function () {
+                clearInterval(timer_villagesChart6);
+            },function(){
+                timer_villagesChart6=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="作业区域招聘求职("+(time<2017?++time:time=2014)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData(5,100,500);
+                    }
+                    villagesChart6.setOption(option,true);
+                },1600);
+            })
         })
 </script>

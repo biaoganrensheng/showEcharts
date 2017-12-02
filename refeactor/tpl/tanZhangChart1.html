@@ -170,10 +170,19 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_tanZhangChart1=setInterval(function(){
                 option.title.text="滩涂巡查完成率("+(time<2017?++time:time=2008)+"年度)";
                 option.series[0].data=newData();
                 tanZhangChart1.setOption(option,true);
-            },1500)
+            },1500);
+            $("#tz_1").hover(function () {
+                clearInterval(timer_tanZhangChart1);
+            },function(){
+                timer_tanZhangChart1=setInterval(function(){
+                    option.title.text="滩涂巡查完成率("+(time<2017?++time:time=2008)+"年度)";
+                    option.series[0].data=newData();
+                    tanZhangChart1.setOption(option,true);
+                },1500);
+            })
         })
 </script>

@@ -174,7 +174,7 @@
           $("#vl_5").hover(function () {
               clearInterval(timer_villagesChart5);
           },function(){
-              var timer_villagesChart5=setInterval(function(){
+             timer_villagesChart5=setInterval(function(){
                   var changeData=option.series;
                   option.title.text="船员职务("+(time<2017?++time:time=2014)+"年度)";
                   for(var i=0;i<changeData.length;i++){

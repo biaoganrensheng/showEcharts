@@ -85,7 +85,7 @@
                 return dataNEW
             };
             var time=2012;
-            setInterval(function(){
+            var timer_postJobChart5=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="作业区域招聘求职("+(time<2017?++time:time=2012)+"年度)";
                 for(var i=0;i<changeData.length;i++){
@@ -93,6 +93,19 @@
                     changeData[i].data[1].value=newData(4,4300,38000);
                 }
                 postJobChart5.setOption(option,true);
-            },1600)
+            },1600);
+           $("#pj_5").hover(function () {
+                clearInterval(timer_postJobChart5);
+            },function(){
+                  timer_postJobChart5=setInterval(function(){
+                   var changeData=option.series;
+                   option.title.text="作业区域招聘求职("+(time<2017?++time:time=2012)+"年度)";
+                   for(var i=0;i<changeData.length;i++){
+                       changeData[i].data[0].value=newData(4,4300,38000);
+                       changeData[i].data[1].value=newData(4,4300,38000);
+                   }
+                   postJobChart5.setOption(option,true);
+               },1600);
+            })
         })
 </script>

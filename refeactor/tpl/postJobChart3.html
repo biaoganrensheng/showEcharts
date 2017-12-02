@@ -120,13 +120,25 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_postJobChart3=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="职位招聘求职("+(time<2017?++time:time=2008)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData(10,100,1000);
                 }
                 postJobChart3.setOption(option,true);
-            },1600)
+            },1600);
+            $("#pj_3").hover(function () {
+                clearInterval(timer_postJobChart3);
+            },function(){
+                  timer_postJobChart3=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="职位招聘求职("+(time<2017?++time:time=2008)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData(10,100,1000);
+                    }
+                    postJobChart3.setOption(option,true);
+                },1600);
+            })
         })
 </script>

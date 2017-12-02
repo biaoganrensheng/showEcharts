@@ -114,11 +114,21 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_waterProductChart4=setInterval(function(){
                 option.legend.data=[(time<2017?++time:time=2008)+"年"];
                 option.series[0].name=(time)+"年";
                 option.series[0].data=newData(6,100,1000,'sort');
                 waterProductChart4.setOption(option,true);
-            },1800)
+            },1800);
+            $("#wp_4").hover(function () {
+                clearInterval(timer_waterProductChart4);
+            },function(){
+                timer_waterProductChart4=setInterval(function(){
+                    option.legend.data=[(time<2017?++time:time=2008)+"年"];
+                    option.series[0].name=(time)+"年";
+                    option.series[0].data=newData(6,100,1000,'sort');
+                    waterProductChart4.setOption(option,true);
+                },1800);
+            })
         })
 </script>

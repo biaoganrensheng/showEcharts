@@ -122,13 +122,25 @@
                 return dataNEW
             };
             var time=2008;
-            setInterval(function(){
+            var timer_tanZhangChart3=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="(问题修复整治"+(time<2017?++time:time=2008)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData();
                 }
                 tanZhangChart3.setOption(option,true);
-            },1600)
+            },1600);
+            $("#tz_3").hover(function () {
+                clearInterval(timer_tanZhangChart3);
+            },function(){
+                timer_tanZhangChart3=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="(问题修复整治"+(time<2017?++time:time=2008)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData();
+                    }
+                    tanZhangChart3.setOption(option,true);
+                },1600);
+            })
         })
 </script>

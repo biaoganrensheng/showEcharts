@@ -92,13 +92,25 @@
                 return dataNEW
             };
             var time=2012;
-            setInterval(function(){
+           var  timer_postJobChart4=setInterval(function(){
                 var changeData=option.series;
                 option.title.text="作业类型招聘求职("+(time<2017?++time:time=2012)+"年度)";
                 for(var i=0;i<changeData.length;i++){
                     changeData[i].data=newData(11,100,1000);
                 }
                 postJobChart4.setOption(option,true);
-            },1600)
+            },1600);
+            $("#pj_4").hover(function () {
+                clearInterval(timer_postJobChart4);
+            },function(){
+                  timer_postJobChart4=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="作业类型招聘求职("+(time<2017?++time:time=2012)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data=newData(11,100,1000);
+                    }
+                    postJobChart4.setOption(option,true);
+                },1600);
+            })
         })
 </script>
