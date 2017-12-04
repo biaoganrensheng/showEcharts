@@ -1,8 +1,8 @@
-<div id="tz_3" ></div>
+<div id="tanzhangpay" ></div>
 <script>
     require.config({
         paths: {
-            echarts: './mapT/dist'
+            echarts: './dist'
         }
     });
     require(
@@ -16,11 +16,11 @@
             'echarts/chart/funnel'
         ],
         function (ec,theme) {
-            var option={
+            var option2=option={
                 title : {
-                    text: '问题修复整治(2008年度)',
+                    text: '滩涂治理完成率(2016年度)',
                     x:'center',
-                    y:'4'
+                    y:'6'
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -44,10 +44,17 @@
                     }
                 },
                 legend: {
+                    origent:'vertical',
                     x:'center',
-                    y:'30',
-                    data:['岸线修复计划','岸线修复完成','滩面污染修复计划','滩面污染修复完成'],
-                    itemGap:6
+                    y:'34',
+                    itemGap:4,
+                    data:['非法占用海滩','非法修、造、拆船舶监管','违禁渔具','非法占用、破坏海岸线','"三无"渔船','入海排污口','农药清潭行'],
+                    selected: {
+                        '非法修、造、拆船舶监管' : false,
+                        '非法占用、破坏海岸线' : false,
+                        '入海排污口' : false,
+                        '农药清潭行' : false
+                    }
                 },
                 toolbox: {
                     show : false,
@@ -64,55 +71,72 @@
                 },
                 calculable : true,
                 grid:{
-                    x:'17%',
-                    y:'26%',
-                    x2:36,
-                    y2:30
-
+                    x:'12%',
+                    y:'28%',
+                    x2:60,
+                    y2:36
                 },
                 xAxis : [
                     {
                         type : 'category',
-                        data :["嘉兴","宁波","舟山","台州","温州"]
+                        boundaryGap : false,
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
                     }
                 ],
                 yAxis : [
                     {
                         type : 'value',
-                        name:"数量",
                         boundaryGap:[0,0.02]
                     }
                 ],
                 series : [
                     {
-                        name:'岸线修复计划',
+                        name:'非法占用海滩',
                         type:'bar',
-                        data: [250,600,700,890,330]
+                        data: [250,340,600,830,320,100,123,345,567]
                     },
                     {
-                        name:'岸线修复完成',
+                        name:'非法修、造、拆船舶监管',
                         type:'bar',
-                        data:[150,300,400,890,330]
+                        data:[230,450,230,450,630,345,567,234,456]
 
                     },
                     {
-                        name:'滩面污染修复计划',
+                        name:'非法占用、破坏海岸线',
                         type:'bar',
-                        data: [220,640,560,780,230]
+                        data: [250,660,720,812,120,456,234,122,456]
 
                     },
                     {
-                        name:'滩面污染修复完成',
+                        name:'违禁渔具',
                         type:'bar',
-                        data:[220,127,600,560,660]
+                        data:[250,220,560,670,890,456,678,122,344]
+
+                    },
+                    {
+                        name:"三无'渔船'",
+                        type:'bar',
+                        data:[230,340,560,770,330,456,234,122,333]
+
+                    },
+                    {
+                        name:'入海排污口',
+                        type:'bar',
+                        data:[250,623,340,240,330,346,789,900,122]
+
+                    },
+                    {
+                        name:'农药清潭行',
+                        type:'bar',
+                        data:[250,645,650,340,330,345,456,678,123]
 
                     }
                 ]
             };
-            var tanZhangChart3=ec.init(document.getElementById("tz_3"),theme);
-            tanZhangChart3.setOption(option);
-            window.onresize = tanZhangChart3.resize;
-//            模拟动态数据
+            var tanZhangChart5=ec.init(document.getElementById("tanzhangpay"),theme);
+            tanZhangChart5.setOption(option2);
+            window.onresize = tanZhangChart5.resize;
+            // 模拟动态数据
             var newData=function(item,min,max){
                 item=item||5,min=min||0,max=max||100;
                 var dataNEW=[];
@@ -121,26 +145,26 @@
                 }
                 return dataNEW
             };
-            var time=2008;
-            var timer_tanZhangChart3=setInterval(function(){
+            var time=2016;
+            var timer_tanZhangChart5=setInterval(function(){
                 var changeData=option.series;
-                option.title.text="问题修复整治("+(time<2017?++time:time=2008)+"年度)";
+                option.title.text="滩涂治理完成率("+(time<2017?++time:time=2016)+"年度)";
                 for(var i=0;i<changeData.length;i++){
-                    changeData[i].data=newData();
+                    changeData[i].data=newData(9,100,1000);
                 }
-                tanZhangChart3.setOption(option,true);
-            },1600);
-            $("#tz_3").hover(function () {
-                clearInterval(timer_tanZhangChart3);
+                tanZhangChart5.setOption(option,true);
+            },1800);
+            $("#tanzhangpay").hover(function () {
+                clearInterval(timer_tanZhangChart5);
             },function(){
-                timer_tanZhangChart3=setInterval(function(){
+                timer_tanZhangChart5=setInterval(function(){
                     var changeData=option.series;
-                    option.title.text="问题修复整治("+(time<2017?++time:time=2008)+"年度)";
+                    option.title.text="滩涂治理完成率("+(time<2017?++time:time=2016)+"年度)";
                     for(var i=0;i<changeData.length;i++){
-                        changeData[i].data=newData();
+                        changeData[i].data=newData(9,100,1000);
                     }
-                    tanZhangChart3.setOption(option,true);
-                },1600);
+                    tanZhangChart5.setOption(option,true);
+                },1800);
             })
         })
 </script>

@@ -1,8 +1,8 @@
-<div id="tz_6" ></div>
+<div id="beachCountCharts" ></div>
 <script>
     require.config({
         paths: {
-            echarts: './mapT/dist'
+            echarts: './dist'
         }
     });
     require(
@@ -18,7 +18,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '滩涂底数完整率(2008年度)',
+                    text: '滩涂底数完整率(2016年度)',
                     x:'center',
                     y:'10'
                 },
@@ -46,14 +46,14 @@
                     x:'12%',
                     y:'20%',
                     x2:36,
-                    y2:30
+                    y2:40
                 },
                 calculable : true,
                 xAxis : [
                     {
                         type : 'category',
                         boundaryGap : false,
-                        data : ["嘉兴","宁波","舟山","台州","温州"]
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
 
                     }
                 ],
@@ -68,7 +68,7 @@
                     {
                         name:'完整率',
                         type:'line',
-                        data:[11, 56, 45, 90, 34],
+                        data:[11, 56, 45, 90, 34,56,78,89,90],
                         markPoint : {
                             data : [
                                 {type : 'max', name: '最大值'},
@@ -85,7 +85,7 @@
 
                 ]
             };
-            var tanZhangChart6=ec.init(document.getElementById("tz_6"),theme);
+            var tanZhangChart6=ec.init(document.getElementById("beachCountCharts"),theme);
             tanZhangChart6.setOption(option);
             window.onresize = tanZhangChart6.resize;
 // 模拟动态数据
@@ -97,23 +97,23 @@
                 }
                 return dataNEW
             };
-            var time=2008;
+            var time=2016;
             var timer_tanZhangChart6=setInterval(function(){
                 var changeData=option.series;
-                option.title.text="滩涂底数完整率("+(time<2017?++time:time=2008)+"年度)";
+                option.title.text="(滩涂底数完整率"+(time<2017?++time:time=2016)+"年度)";
                 for(var i=0;i<changeData.length;i++){
-                    changeData[i].data=newData();
+                    changeData[i].data=newData(9,1,100);
                 }
                 tanZhangChart6.setOption(option,true);
             },2000);
-            $("#tz_6").hover(function () {
+            $("#beachCountCharts").hover(function () {
                 clearInterval(timer_tanZhangChart6);
             },function(){
                 timer_tanZhangChart6=setInterval(function(){
                     var changeData=option.series;
-                    option.title.text="滩涂底数完整率("+(time<2017?++time:time=2008)+"年度)";
+                    option.title.text="滩涂底数完整率("+(time<2017?++time:time=2016)+"年度)";
                     for(var i=0;i<changeData.length;i++){
-                        changeData[i].data=newData();
+                        changeData[i].data=newData(9,1,100);
                     }
                     tanZhangChart6.setOption(option,true);
                 },2000);

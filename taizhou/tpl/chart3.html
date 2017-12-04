@@ -1,8 +1,8 @@
-<div id="tz_3" ></div>
+<div id="beachRepairCharts" ></div>
 <script>
     require.config({
         paths: {
-            echarts: './mapT/dist'
+            echarts: './dist'
         }
     });
     require(
@@ -18,7 +18,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '问题修复整治(2008年度)',
+                    text: '问题修复整治(2016年度)',
                     x:'center',
                     y:'4'
                 },
@@ -73,7 +73,7 @@
                 xAxis : [
                     {
                         type : 'category',
-                        data :["嘉兴","宁波","舟山","台州","温州"]
+                        data :['椒江区完成率','黄岩区完成率','路桥区完成率','玉环市完成率','三门县完成率','天台县完成率','仙居县完成率','温岭市完成率','临海市完成率']
                     }
                 ],
                 yAxis : [
@@ -87,29 +87,29 @@
                     {
                         name:'岸线修复计划',
                         type:'bar',
-                        data: [250,600,700,890,330]
+                        data: [250,600,700,890,330,200,234,677,344]
                     },
                     {
                         name:'岸线修复完成',
                         type:'bar',
-                        data:[150,300,400,890,330]
+                        data:[150,300,400,890,330,456,567,233,124]
 
                     },
                     {
                         name:'滩面污染修复计划',
                         type:'bar',
-                        data: [220,640,560,780,230]
+                        data: [220,640,560,780,230,567,123,334,567]
 
                     },
                     {
                         name:'滩面污染修复完成',
                         type:'bar',
-                        data:[220,127,600,560,660]
+                        data:[220,127,600,560,660,566,334,555,124]
 
                     }
                 ]
             };
-            var tanZhangChart3=ec.init(document.getElementById("tz_3"),theme);
+            var tanZhangChart3=ec.init(document.getElementById("beachRepairCharts"),theme);
             tanZhangChart3.setOption(option);
             window.onresize = tanZhangChart3.resize;
 //            模拟动态数据
@@ -121,23 +121,23 @@
                 }
                 return dataNEW
             };
-            var time=2008;
+            var time=2016;
             var timer_tanZhangChart3=setInterval(function(){
                 var changeData=option.series;
-                option.title.text="问题修复整治("+(time<2017?++time:time=2008)+"年度)";
+                option.title.text="问题修复整治("+(time<2017?++time:time=2016)+"年度)";
                 for(var i=0;i<changeData.length;i++){
-                    changeData[i].data=newData();
+                    changeData[i].data=newData(9,100,1000);
                 }
                 tanZhangChart3.setOption(option,true);
             },1600);
-            $("#tz_3").hover(function () {
+            $("#beachRepairCharts").hover(function () {
                 clearInterval(timer_tanZhangChart3);
             },function(){
                 timer_tanZhangChart3=setInterval(function(){
                     var changeData=option.series;
-                    option.title.text="问题修复整治("+(time<2017?++time:time=2008)+"年度)";
+                    option.title.text="问题修复整治("+(time<2017?++time:time=2016)+"年度)";
                     for(var i=0;i<changeData.length;i++){
-                        changeData[i].data=newData();
+                        changeData[i].data=newData(9,100,1000);
                     }
                     tanZhangChart3.setOption(option,true);
                 },1600);

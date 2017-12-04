@@ -1,8 +1,8 @@
-<div id="tz_4"  ></div>
+<div id="beachBuildCharts"  ></div>
 <script>
     require.config({
         paths: {
-            echarts: './mapT/dist'
+            echarts: './dist'
         }
     });
     require(
@@ -18,7 +18,7 @@
         function (ec,theme) {
             var option={
                 title : {
-                    text: '滩长组织建设(2008年度)',
+                    text: '滩长组织建设(2016年度)',
                     x:'center',
                     y:'10'
                 },
@@ -48,7 +48,7 @@
                 },
                 calculable : true,
                 grid:{
-                    x:'10%',
+                    x:'14%',
                     y:'20%',
                     x2:30,
                     y2:30
@@ -63,7 +63,7 @@
                 yAxis : [
                     {
                         type : 'category',
-                        data : ["嘉兴","宁波","舟山","台州","温州"]
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
                     }
                 ],
                 series : [
@@ -72,25 +72,25 @@
                         type:'bar',
                         stack: '总量',
                         itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
-                        data:[320, 302, 301, 334, 390]
+                        data:[320, 302, 301, 334, 390,450,456,677,888]
                     },
                     {
                         name:'县级',
                         type:'bar',
                         stack: '总量',
                         itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
-                        data:  [320,78,654,321,112]
+                        data:  [320,780,654,321,112,344,233,122,456]
                     },
                     {
                         name:'镇级',
                         type:'bar',
                         stack: '总量',
                         itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
-                        data: [320, 302, 301, 334, 390]
+                        data: [320, 302, 301, 334, 390,100,234,345,456]
                     }
                 ]
             };
-            var tanZhangChart4=ec.init(document.getElementById("tz_4"),theme);
+            var tanZhangChart4=ec.init(document.getElementById("beachBuildCharts"),theme);
             tanZhangChart4.setOption(option);
             window.onresize = tanZhangChart4.resize;
 // 模拟动态数据
@@ -102,23 +102,23 @@
                 }
                 return dataNEW
             };
-            var time=2008;
+            var time=2016;
             var timer_tanZhangChart4=setInterval(function(){
                 var changeData=option.series;
-                option.title.text="滩长组织建设("+(time<2017?++time:time=2008)+"年度)";
+                option.title.text="滩长组织建设("+(time<2017?++time:time=2016)+"年度)";
                 for(var i=0;i<changeData.length;i++){
-                    changeData[i].data=newData();
+                    changeData[i].data=newData(9,100,1000);
                 }
                 tanZhangChart4.setOption(option,true);
             },1800);
-            $("#tz_4").hover(function () {
+            $("#beachBuildCharts").hover(function () {
                 clearInterval(timer_tanZhangChart4);
             },function(){
                 timer_tanZhangChart4=setInterval(function(){
                     var changeData=option.series;
-                    option.title.text="滩长组织建设("+(time<2017?++time:time=2008)+"年度)";
+                    option.title.text="(滩长组织建设"+(time<2017?++time:time=2016)+"年度)";
                     for(var i=0;i<changeData.length;i++){
-                        changeData[i].data=newData();
+                        changeData[i].data=newData(9,100,1000);
                     }
                     tanZhangChart4.setOption(option,true);
                 },1800);
