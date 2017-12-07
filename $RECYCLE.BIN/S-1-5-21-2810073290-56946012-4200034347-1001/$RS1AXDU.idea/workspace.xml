@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10265a37-55ca-4335-914d-2e47eef8eff9" name="默认的" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileColors">
+    <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
+    <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
+    <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
+    <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="62">
+              <caret line="129" column="22" lean-forward="true" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>.</find>
+      <find>、</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>,</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tpl/chart7.html" />
+        <option value="$PROJECT_DIR$/plugins/public_alert.js" />
+        <option value="$PROJECT_DIR$/CHANGLOG.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="F:/showChart3/waterMonitor/waterM.html" />
+        <option value="F:/waterMonitor/dist/shine.js" />
+        <option value="F:/waterMonitor/job.html" />
+        <option value="F:/waterMonitor/dist/heliantus.js" />
+        <option value="F:/waterMonitor/village.html" />
+        <option value="F:/waterMonitor/waterM.html" />
+        <option value="F:/waterMonitor/README.md" />
+        <option value="$PROJECT_DIR$/tpl/chart1.html" />
+        <option value="$PROJECT_DIR$/tpl/chart4.html" />
+        <option value="$PROJECT_DIR$/tpl/chart2.html" />
+        <option value="$PROJECT_DIR$/tpl/chart3.html" />
+        <option value="$PROJECT_DIR$/tpl/chart6.html" />
+        <option value="$PROJECT_DIR$/tpl/chart5.html" />
+        <option value="$PROJECT_DIR$/ect.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="P:/refeactor/index.html" />
+        <option value="P:/refeactor/tpl/tanZhangChart3.html" />
+        <option value="P:/refeactor/tpl/tanZhangChart4.html" />
+        <option value="P:/refeactor/tpl/tanZhangChart6.html" />
+        <option value="$PROJECT_DIR$/test/silderBar.json" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1872" />
+    <option name="height" value="1084" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers ProjectPane="true" />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="taizhou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECT" type="47feb1d3:ProjectViewModuleNode" />
+            </path>
+            <path>
+              <item name="taizhou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECT" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="taizhou" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taizhou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECT" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="taizhou" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="D:/SetSystem/LPFnode/node" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="P:\taizhou" />
+      <recent name="P:\taizhou\images" />
+      <recent name="P:\taizhou\data" />
+      <recent name="F:\showChart3\waterMonitor\plugins" />
+      <recent name="P:\ECT" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10265a37-55ca-4335-914d-2e47eef8eff9" name="默认的" comment="" />
+      <created>1511244825266</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1511244825266</updated>
+      <workItem from="1511244826604" duration="16205000" />
+      <workItem from="1511314683312" duration="16927000" />
+      <workItem from="1512350556550" duration="10834000" />
+      <workItem from="1512364376083" duration="43000" />
+      <workItem from="1512366809226" duration="169000" />
+      <workItem from="1512367009577" duration="578000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="44756000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13943355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3132275" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://F:/waterMonitor/waterM.html</url>
+          <line>168</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tpl/chart2.html</url>
+          <line>100</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tpl/chart2.html</url>
+          <line>88</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tpl/chart2.html</url>
+          <line>427</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://P:/refeactor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14588">
+          <caret line="743" column="84" lean-forward="false" selection-start-line="743" selection-start-column="84" selection-end-line="743" selection-end-column="84" />
+          <folding>
+            <element signature="e#17170#18126#0" expanded="false" />
+            <element signature="e#18170#18303#0" expanded="false" />
+            <element signature="e#18334#20635#0" expanded="false" />
+            <element signature="e#20640#20663#0" expanded="false" />
+            <element signature="e#20668#21041#0" expanded="false" />
+            <element signature="e#21136#21742#0" expanded="false" />
+            <element signature="e#21748#21801#0" expanded="false" />
+            <element signature="e#21848#22441#0" expanded="false" />
+            <element signature="e#22447#22497#0" expanded="false" />
+            <element signature="e#22546#22920#0" expanded="false" />
+            <element signature="e#22926#22950#0" expanded="false" />
+            <element signature="e#25510#26911#0" expanded="false" />
+            <element signature="e#28134#28502#0" expanded="false" />
+            <element signature="e#28581#28954#0" expanded="false" />
+            <element signature="e#28986#29102#0" expanded="false" />
+            <element signature="e#29142#29515#0" expanded="false" />
+            <element signature="e#29547#29659#0" expanded="false" />
+            <element signature="e#29698#29861#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/coast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <marker date="1512366606238" expanded="true" signature="5968:5974" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5974:5980" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5981:5987" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5987:5993" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6248:6254" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6254:6260" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6260:6266" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6266:6272" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6272:6278" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6278:6284" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6284:6290" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/silderBar.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="980">
+          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4396">
+          <caret line="157" column="9" lean-forward="false" selection-start-line="157" selection-start-column="9" selection-end-line="157" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#17170#18126#0" expanded="false" />
+            <element signature="e#18170#18303#0" expanded="false" />
+            <element signature="e#18334#20635#0" expanded="false" />
+            <element signature="e#20640#20663#0" expanded="false" />
+            <element signature="e#20668#21041#0" expanded="false" />
+            <element signature="e#21136#21742#0" expanded="false" />
+            <element signature="e#21748#21801#0" expanded="false" />
+            <element signature="e#21848#22441#0" expanded="false" />
+            <element signature="e#22447#22497#0" expanded="false" />
+            <element signature="e#22546#22920#0" expanded="false" />
+            <element signature="e#22926#22950#0" expanded="false" />
+            <element signature="e#25510#26911#0" expanded="false" />
+            <element signature="e#28134#28502#0" expanded="false" />
+            <element signature="e#28581#28954#0" expanded="false" />
+            <element signature="e#28986#29102#0" expanded="false" />
+            <element signature="e#29142#29515#0" expanded="false" />
+            <element signature="e#29547#29659#0" expanded="false" />
+            <element signature="e#29698#29861#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#17170#18126#0" expanded="false" />
+            <element signature="e#18170#18303#0" expanded="false" />
+            <element signature="e#18334#20635#0" expanded="false" />
+            <element signature="e#20640#20663#0" expanded="false" />
+            <element signature="e#20668#21041#0" expanded="false" />
+            <element signature="e#21136#21742#0" expanded="false" />
+            <element signature="e#21748#21801#0" expanded="false" />
+            <element signature="e#21848#22441#0" expanded="false" />
+            <element signature="e#22447#22497#0" expanded="false" />
+            <element signature="e#22546#22920#0" expanded="false" />
+            <element signature="e#22926#22950#0" expanded="false" />
+            <element signature="e#25510#26911#0" expanded="false" />
+            <element signature="e#28134#28502#0" expanded="false" />
+            <element signature="e#28581#28954#0" expanded="false" />
+            <element signature="e#28986#29102#0" expanded="false" />
+            <element signature="e#29142#29515#0" expanded="false" />
+            <element signature="e#29547#29659#0" expanded="false" />
+            <element signature="e#29698#29861#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/waterMonitor/village.html" />
+    <entry file="file://$PROJECT_DIR$/tpl/chart7.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/layer/layer.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/public_alert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGLOG.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="56">
+            <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/humans.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1035">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robots.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="112">
+            <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/showChart3/waterMonitor/plugins/font-awesome.css" />
+    <entry file="file://F:/showChart3/waterMonitor/waterM.html" />
+    <entry file="file://F:/waterMonitor/dist/blue.js" />
+    <entry file="file://F:/waterMonitor/job.html" />
+    <entry file="file://F:/waterMonitor/dist/heliantus.js" />
+    <entry file="file://F:/waterMonitor/README.md" />
+    <entry file="file://F:/waterMonitor/waterM.html" />
+    <entry file="file://F:/waterMonitor/village.html" />
+    <entry file="file://$PROJECT_DIR$/tpl/chart1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="72" column="86" lean-forward="false" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/chart4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="124" column="14" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="124" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/chart3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="137" column="46" lean-forward="false" selection-start-line="137" selection-start-column="46" selection-end-line="137" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/chart6.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/chart5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="159" column="60" lean-forward="true" selection-start-line="159" selection-start-column="60" selection-end-line="159" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/chart2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2072">
+          <caret line="553" column="46" lean-forward="true" selection-start-line="553" selection-start-column="46" selection-end-line="553" selection-end-column="46" />
+          <folding>
+            <element signature="e#453#644#0" expanded="false" />
+            <element signature="e#1207#2567#0" expanded="false" />
+            <element signature="e#3464#4100#0" expanded="false" />
+            <element signature="e#3507#3932#0" expanded="false" />
+            <element signature="e#3976#4070#0" expanded="false" />
+            <element signature="e#4167#4833#0" expanded="false" />
+            <element signature="e#4904#7171#0" expanded="false" />
+            <element signature="e#7193#9461#0" expanded="false" />
+            <element signature="e#9483#11751#0" expanded="false" />
+            <element signature="e#11773#14039#0" expanded="false" />
+            <element signature="e#12621#13257#0" expanded="false" />
+            <element signature="e#12664#13089#0" expanded="false" />
+            <element signature="e#13133#13227#0" expanded="false" />
+            <element signature="e#13324#13990#0" expanded="false" />
+            <element signature="e#14061#16328#0" expanded="false" />
+            <element signature="e#16350#18618#0" expanded="false" />
+            <element signature="e#18640#20908#0" expanded="false" />
+            <element signature="e#20930#23198#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/postJobChart1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2767">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-611">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1153">
+          <caret line="137" column="46" lean-forward="false" selection-start-line="137" selection-start-column="46" selection-end-line="137" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="118" column="46" lean-forward="false" selection-start-line="118" selection-start-column="46" selection-end-line="118" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3187">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart6.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3416">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/tpl/tanZhangChart7.html" />
+    <entry file="file://$PROJECT_DIR$/data/coast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <marker date="1512366606238" expanded="true" signature="5968:5974" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5974:5980" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5981:5987" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="5987:5993" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6248:6254" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6254:6260" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6260:6266" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6266:6272" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6272:6278" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6278:6284" ph=" " />
+            <marker date="1512366606238" expanded="true" signature="6284:6290" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/silderBar.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="980">
+          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/refeactor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14588">
+          <caret line="743" column="84" lean-forward="false" selection-start-line="743" selection-start-column="84" selection-end-line="743" selection-end-column="84" />
+          <folding>
+            <element signature="e#17170#18126#0" expanded="false" />
+            <element signature="e#18170#18303#0" expanded="false" />
+            <element signature="e#18334#20635#0" expanded="false" />
+            <element signature="e#20640#20663#0" expanded="false" />
+            <element signature="e#20668#21041#0" expanded="false" />
+            <element signature="e#21136#21742#0" expanded="false" />
+            <element signature="e#21748#21801#0" expanded="false" />
+            <element signature="e#21848#22441#0" expanded="false" />
+            <element signature="e#22447#22497#0" expanded="false" />
+            <element signature="e#22546#22920#0" expanded="false" />
+            <element signature="e#22926#22950#0" expanded="false" />
+            <element signature="e#25510#26911#0" expanded="false" />
+            <element signature="e#28134#28502#0" expanded="false" />
+            <element signature="e#28581#28954#0" expanded="false" />
+            <element signature="e#28986#29102#0" expanded="false" />
+            <element signature="e#29142#29515#0" expanded="false" />
+            <element signature="e#29547#29659#0" expanded="false" />
+            <element signature="e#29698#29861#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="129" column="22" lean-forward="true" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

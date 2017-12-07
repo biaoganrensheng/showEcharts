@@ -1,0 +1,111 @@
+.m-com-header {
+    text-align: center;
+    height: 1.12rem;
+    width: 100%;
+    position: relative;
+    line-height: 1.12rem;
+    font-size: .44rem;
+    background-color: #e4393c;
+    color: #fff;
+}
+
+.g-main h3 {
+    margin: .2rem 0;
+    padding-left: .2rem;
+    font-size: .4rem;
+}
+
+#act .mui-input-row label {
+    font-size: .34rem;
+}
+
+.upload {
+    margin: .2rem 0;
+    width: 100%;
+    height: 56px;
+    position: relative;
+}
+
+.upload #filer_input1, .upload #filer_input2,.upload .mui-btn-success {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
+.upload #filer_input1 {
+    z-index: -1;
+    opacity: 0;
+}
+.upload #filer_input2 {
+    z-index: -2;
+    opacity: 0;
+}
+
+.upload .mui-btn-primary {
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.FileArea {
+    background-color: #fff;
+    margin-bottom: .2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-container {
+    position: relative;
+    width: 1.8rem;
+    height: 1.8rem;
+    text-align: center;
+    margin-left: .06rem;
+}
+
+.img-container .del-img {
+    position: absolute;
+    top: .1rem;
+    right: .2rem;
+    width: .32rem;
+    z-index: 100;
+}
+
+.img-container .img_sl {
+    width: 1.68rem;
+    height: 1.68rem;
+    border-radius: .08rem;
+}
+
+.add-img {
+    width: 1.68rem;
+    margin-left: .06rem;
+    display: none;
+}
+
+
+/*****/
+
+.tel.mui-input-clear {
+    margin-top: .04rem;
+    margin-left: .06rem;
+}
+
+.mui-switch {
+    margin-top: .16rem;
+    margin-right: .44rem;
+}
+
+.mui-switch:before {
+    top: -8px;
+}
+
+.telMess {
+    padding-left: 15px;
+    font-size: .34rem;
+    line-height: 45px;
+}

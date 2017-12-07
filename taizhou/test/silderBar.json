@@ -34,6 +34,12 @@
       "badge":24,
       "url":"mapshow.html?type=illpest",
       "params":"?age=100&name=非法"
+    },
+    {
+      "content":"滩涂位置专项",
+      "badge":24,
+      "url":"mapshow.html?type=mud",
+      "params":"?age=100&name=非法"
     }
   ]
 }
