@@ -1,0 +1,568 @@
+<div id="beachgsp"></div>
+<script>
+    require.config({
+        paths: {
+            echarts: './dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/dark',
+            'echarts/chart/map',
+            'echarts/chart/line',
+            'echarts/chart/bar',
+            'echarts/chart/pie',
+            'echarts/chart/funnel'
+        ],
+        function (ec,theme) {
+            var option={
+                legend: {
+                    x : 'center',
+                    y:'10%',
+                    data :['椒江区完成率','黄岩区完成率','路桥区完成率','玉环市完成率','三门县完成率','天台县完成率','仙居县完成率','温岭市完成率','临海市完成率']
+                },
+                title : {
+                    text: '各地区公示牌完成进度(2016年度)',
+                    x: 'center',
+                    y:'10'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter:function(params){
+                        if(params["1"]=="other"){
+                            return '完成率'+(100-params['2'])+'%';
+                        }else{
+                            return '完成率'+params['2']+'%';
+                        }
+                    }
+                },
+                toolbox: {
+                    show : false,
+                    feature : {
+                        dataView : {show: true, readOnly:true},
+                        magicType : {
+                            show: true,
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    width: '20%',
+                                    height: '30%',
+                                    itemStyle : {
+                                        normal : {
+                                            label : {
+                                                formatter : function (params){
+                                                    return 'other\n' + params.value + '%\n'
+                                                },
+                                                textStyle: {
+                                                    baseline : 'middle'
+                                                }
+                                            }
+                                        },
+                                    }
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                series : [
+                    {
+                        type : 'pie',
+                        center : ['18%', '42%'],
+                        radius : ['10%', '22%'],
+                        x: '0%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:46, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'椒江区完成率', value:54,itemStyle :{
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['40%', '42%'],
+                        radius : ['10%', '22%'],
+                        x:'20%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:56, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'黄岩区完成率', value:44,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['62%', '42%'],
+                        radius :  ['10%', '22%'],
+                        x:'40%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:33, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'路桥区完成率', value:67,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['84%', '42%'],
+                        radius :  ['10%', '22%'],
+                        x:'60%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:70, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'玉环市完成率', value:30,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['30%', '64%'],
+                        radius : ['10%', '22%'],
+                        x: '0%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:46, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'三门县完成率', value:54,itemStyle :{
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['52%', '64%'],
+                        radius : ['10%', '22%'],
+                        x:'20%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:56, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'天台县完成率', value:44,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['74%', '64%'],
+                        radius :  ['10%', '22%'],
+                        x:'40%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:33, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'仙居县完成率', value:67,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['40%', '86%'],
+                        radius :  ['10%', '22%'],
+                        x:'60%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:70, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'温岭市完成率', value:30,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['64%', '86%'],
+                        radius :  ['10%', '22%'],
+                        x:'80%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:40, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'临海市完成率', value:60,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    }
+                ]
+            };
+            var tanZhangChart2=ec.init(document.getElementById("beachgsp"),theme);
+            tanZhangChart2.setOption(option);
+            window.onresize = tanZhangChart2.resize;
+            // 模拟动态数据
+            var newData=function(item,min,max){
+                item=item||5,min=min||0,max=max||100;
+                var dataNEW=[];
+                for(var i=0;i<item;i++){
+                    dataNEW.push(Math.floor(Math.random()*(max-min+1)+min))
+                }
+                return dataNEW
+            };
+            var time=2016;
+            var timer_tanZhangChart2=setInterval(function(){
+                var changeData=option.series;
+                option.title.text="各地区公示牌完成进度("+(time<2017?++time:time=2016)+"年度)";
+                for(var i=0;i<changeData.length;i++){
+                    changeData[i].data[0].value=newData(1,1,100);
+                    changeData[i].data[1].value=newData(1,1,100);
+                }
+                tanZhangChart2.setOption(option,true);
+            },1800);
+            $("#beachgsp").hover(function () {
+                clearInterval(timer_tanZhangChart2);
+            },function(){
+                timer_tanZhangChart2=setInterval(function(){
+                    var changeData=option.series;
+                    option.title.text="各地区公示牌完成进度("+(time<2017?++time:time=2016)+"年度)";
+                    for(var i=0;i<changeData.length;i++){
+                        changeData[i].data[0].value=newData(1,1,100);
+                        changeData[i].data[1].value=newData(1,1,100);
+                    }
+                    tanZhangChart2.setOption(option,true);
+                },1800);
+            })
+        })
+</script>
