@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +41,7 @@
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 0;
         }
 
         .page-container, .page-container > div {
@@ -63,8 +63,10 @@
         .leftItem, .rightItem {
             border-top: 1px solid #c2c2c2;
         }
-
-        #beachSearchCharts, #beachBuildCharts {
+        .list-group.mytpl>a:last-child{
+          border-radius: 0;
+        }
+        #beachgspCharts, #beachSearchCharts {
             border-top-color: transparent;
         }
 
@@ -155,6 +157,12 @@
         .mytpl .list-group-item,#searchBtn{
             outline: none;
         }
+        .mytpl .list-group-item{
+            padding:10px 8px;
+        }
+        .mCustomScrollBox.mCS-dark-thin{
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -167,13 +175,10 @@
         <div class="row page-container">
             <div class="col-md-3" >
                 <div class="row">
-                    <div class="chartPulic leftItem" data-url="chart1.html"></div>
+                    <div class="chartPulic leftItem" id="beachgspCharts"></div>
                 </div>
                 <div class="row">
-                    <div class="chartPulic leftItem specialItem1" data-url="chart2.html"></div>
-                </div>
-                <div class="row">
-                    <div  class="chartPulic leftItem" data-url="chart3.html"></div>
+                    <div class="chartPulic leftItem specialItem1" id="tanzhangpayCharts"> </div>
                 </div>
             </div>
             <div class="col-md-6 areaChange">
@@ -184,7 +189,7 @@
                                 <div class="row" id="changeArea">
                                     <form class="form-inline">
                                         <div id="distpicker">
-                                            <div class="form-group" style="display: none">
+                                           <!-- <div class="form-group" style="display: none">
                                                 <label class="sr-only" for="province1">Province</label>
                                                 <select class="form-control" id="province1"></select>
                                             </div>
@@ -195,7 +200,7 @@
                                             <div class="form-group" style="box-sizing: border-box;width:48%;">
                                                 <label class="sr-only" for="district3">District</label>
                                                 <select class="form-control" id="district3" style="width:90%;margin-left:5%;"></select>
-                                            </div>
+                                            </div>-->
 
                                             <div class="form-group has-default has-feedback" style="margin-top: 10px;">
                                                 <div class="row" style="margin:1% 0;">
@@ -207,7 +212,7 @@
                                                         <input name="startTime" type="text"
                                                                class="form-control date-picker" id="startTime"
                                                                style="width:100%;padding-right:0;"
-                                                               placeholder="2017-11-15">
+                                                               value="2017-11-15">
                                                         <span class="caret arrowPositionChild"></span>
                                                     </div>
                                                 </div>
@@ -220,12 +225,12 @@
                                                         <input name="endTime" type="text" id="endTime"
                                                                class="form-control date-picker" id="endTime"
                                                                style="width:100%;padding-right:0;"
-                                                               placeholder="2017-11-15">
+                                                               value="2017-11-15">
                                                         <span class="caret arrowPositionChild"></span>
                                                     </div>
-                                                    <button type="button" class="btn btn-success btn-md btn-block"
+                                                    <button type="button"  class="btn btn-success btn-md btn-block"
                                                             id="searchBtn"
-                                                            style="width:90%;height:40px;margin:0 auto;margin-top:22%;">
+                                                            style="width:90%;height:40px;margin:0 auto;margin-top:24%;">
                                                         <i class="glyphicon glyphicon-search"
                                                            style="margin-right:6px;"></i>查 询
                                                     </button>
@@ -255,13 +260,13 @@
             </div>
             <div class="col-md-3">
                 <div class="row">
-                    <div class="chartPulic rightItem" data-url="chart4.html"></div>
+                    <div class="chartPulic rightItem" id="beachSearchCharts"></div>
                 </div>
                 <div class="row">
-                    <div  class="chartPulic rightItem specialItem2" data-url="chart5.html"></div>
+                    <div  class="chartPulic rightItem specialItem2" id="beachBuildCharts"></div>
                 </div>
                 <div class="row">
-                    <div class="chartPulic rightItem" data-url="chart6.html"></div>
+                    <div class="chartPulic rightItem" id="beachCountCharts"> </div>
                 </div>
             </div>
         </div>
@@ -269,6 +274,8 @@
 </div>
 <!-- 全局js -->
 <script src="plugins/jquery.min.js?v=2.1.4"></script>
+<script src="dist/echarts-all.js"></script>
+<script src="dist/dark.js"></script>
 <script src="plugins/bootstrap.min.js?v=3.3.6"></script>
 <script src="dist/canvas-particle.js"></script>
 <script src="plugins/bootstrap-datetimepicker.min.gai.js"></script>
@@ -278,38 +285,41 @@
 <script src="plugins/public_alert.js"></script>
 <script src="plugins/baiduTemplate.js"></script>
 <!-- ECharts单文件引入 -->
-<script src="dist/echarts.js"></script>
 <script id="silderBarControl" type="text/html">
     <%if(res==1){%>
     <div class="list-group mytpl">
         <%for(var i=0;i
         <list.length
         ;i++){%>
-        <a href="javascript:;" class="list-group-item">
+        <a href="javascript:;" class="list-group-item" data-url="<%=list[i].url%>">
             <%=list[i].content%>
             <%if(list[i].badge){%>
             <span class="badge">
                   <%=list[i].badge%>
               </span>
             <%}%>
-            <input type="hidden" value="<%=list[i].url%>" data-params="<%:=list[i].params%>">
-        </a>
+         </a>
         <%}%>
     </div>
     <%}%>
 </script>
 
 <script>
-    var iframeObj;
+    var initChartsArr=[],theme=Dark,
+        beachgspChartsFlag=true,
+        tanzhangpayChartsFlag=true,
+        beachBuildChartsFlag=true,
+        beachCountChartsFlag=true,
+        beachSearchChartsFlag=true,
+        initChartNameArr=[];
     function addControlBar() {
         var _baseH = $(".page-container").height();
         var _panelH = (_baseH - ($("#panelHeight").outerHeight())) * .9;
         $("#silderBar-panel").css({
             'maxHeight': _panelH
         });
-        var userName = "张三",
-            url = "test/silderBar.json";
-        TL_ajax(url, {userName: userName}, 'GET')
+        var url = "test/silderBar.json";
+        TL_ajax(url,{},'GET')
             .done(function (data) {
                 /*模板渲染*/
                 BaiDuTpl("silderBarControl", "silderBar-panel", data);
@@ -320,6 +330,7 @@
                     },
                     theme: "dark-thin"
                 });
+                $(".mytpl>a").eq("0").addClass("active");
                 /*初始化加载的地图*/
                 var initUrl = data.list[0].url;
                 $("#changeTab").attr('src', initUrl);
@@ -327,25 +338,25 @@
 
     }
 
-    function resetHeight(dom, part, per, sliceleft, sliceright) {
+    function resetHeight(page,dom, part, per, sliceleft, sliceright) {
         var _baseH = $(".page-container").height();
         sliceleft = sliceleft || 3;
         sliceright = sliceright || 3;
         if (part == "left") {
             var _domPer = per || 0.4, _elsePer = ((1 - per) / (sliceleft - 1)) || 0.3;
             var _domH = _baseH * _domPer, _elseHeight = _baseH * _elsePer;
-            $(".leftItem").height(_elseHeight);
-            $(dom).height(_domH);
+            $(page+" .leftItem").height(_elseHeight);
+            $(page+dom).height(_domH);
         } else if (part == "right") {
             var _domPer = per || 0.4, _elsePer = ((1 - per) / (sliceright - 1)) || 0.3;
             var _domH = _baseH * _domPer, _elseHeight = _baseH * _elsePer;
-            $(".rightItem").height(_elseHeight);
-            $(dom).height(_domH);
+            $(page+" .rightItem").height(_elseHeight);
+            $(page+dom).height(_domH);
         } else {
             var _heightL = (_baseH) / sliceleft + 'px';
             var _heightR = (_baseH) / sliceright + 'px';
-            $(".leftItem").height(_heightL);
-            $(".rightItem").height(_heightR);
+            $(page+" .leftItem").height(_heightL);
+            $(page+" .rightItem").height(_heightR);
         }
 
     }
@@ -370,7 +381,7 @@
      * @param  {[num]} reqTime [设置超时时间]
      *
      */
-    var TL_ajax = function (reqUrl, reqData, reqType, myChart, resType, contentType, reqTime) {
+    var TL_ajax = function (reqUrl, reqData, reqType, myChart,targetCharts,resType, contentType, reqTime) {
         var AJAX = $.ajax({
             url: reqUrl,
             type: reqType || "GET",
@@ -380,49 +391,15 @@
             contentType: contentType || "application/x-www-form-urlencoded",
             timeout: reqTime || 3000,
             beforeSend: function (XHR) {
-                myChart && showOrHideLoading("start", reqData, myChart);
+                myChart && showOrHideLoading(targetCharts,"start");
             },
             complete: function (XHR, TS) {
-                myChart && showOrHideLoading("end", reqData, myChart);
+              myChart && showOrHideLoading(targetCharts,"end");
             }
         });
         return AJAX;
     };
-    /**
-     * 2.TL_getUrlparamsArray:获得地址参数的数组
-     * */
-    var TL_getUrlparamsArray = function (url) {
-        var search = url || window.location.search;
-        var tmparray = search.substr(1, search.length).split("&");
-        var paramsArray = new Array;
-        if (tmparray != null) {
-            for (var i = 0; i < tmparray.length; i++) {
-                var reg = /[=|^==]/;    // 用=进行拆分，但不包括==
-                var set1 = tmparray[i].replace(reg, '&');
-                var tmpStr2 = set1.split('&');
-                var array = new Array;
-                array[tmpStr2[0]] = tmpStr2[1];
-                paramsArray.push(array);
-            }
-        }
-        return paramsArray;
-    };
-    /**
-     * 3.TL_getParamValue:获得地址参数对应的值
-     * */
-    var TL_getParamValue = function (name, url) {
-        var paramsArray = TL_getUrlparamsArray(url);
-        if (paramsArray != null) {
-            for (var i = 0; i < paramsArray.length; i++) {
-                for (var j in paramsArray[i]) {
-                    if (j == name) {
-                        return paramsArray[i][j];
-                    }
-                }
-            }
-        }
-        return null;
-    };
+
     /**
      *
      * 事件函数*/
@@ -440,13 +417,9 @@
             $(".changeIcon").removeClass("glyphicon-resize-small").addClass('glyphicon-resize-full');
             $(this).removeClass("flag");
             $(".list-group").removeClass("oneClick");
-            $(".chartPulic").each(function (i, v) {
-                var _dataUrl=$(v).data('url');
-                var _url = "./tpl/"+_dataUrl;
-                $(v).load(_url);
-            });
         } else {
             $(this).addClass("flag");
+            $(".list-group").addClass("oneClick");
             $(".page-container>div").not(".areaChange").map(function (i, v) {
                 $(v).addClass("hide").removeClass("show");
             });
@@ -462,120 +435,1081 @@
     var bindItemChangeEvent = function () {
         if ($(".list-group").hasClass("oneClick")) {
             $(this).addClass('active').siblings("a").removeClass('active');
-            var _targetDOM = $(this).find("[type='hidden']");
-            var _url = _targetDOM.val();
-            var _data = _targetDOM.data("params");
-            iframeObj = {
-                name: TL_getParamValue("name", _data),
-                age: TL_getParamValue("age", _data)
-            };
-            $("#changeTab").attr("src", _url);
         } else {
             $(".setting-icon").trigger("click");
             $(".list-group").addClass("oneClick");
             $(this).addClass('active').siblings("a").removeClass('active');
-            var _targetDOM = $(this).find("[type='hidden']");
-            var _url = _targetDOM.val();
-            var _data = _targetDOM.data("params");
-            iframeObj = {
-                name: TL_getParamValue("name", _data),
-                age: TL_getParamValue("age", _data)
-            };
-            $("#changeTab").attr("src", _url);
         }
+        var _startTime = $("#startTime").val(),
+            _endTime = $("#endTime").val(),
+            _baseUrl = $(this).data('url'),
+            _rendUrl = _baseUrl+'startTime='+_startTime+'&endTime='+_endTime;
+          $("#changeTab").attr("src",_rendUrl);
     };
     /**
-     * 3.查询更新图表
-     * */
-    var renderEvent=function(renderType,obj){
-       var renderChartArr=(function(param){
-            var chartNum=$(".chartPulic").size();
-            var rederChart=[];
-            if(param=="all"){
-                $(".chartPulic").each(function (i, v) {
-                    var _dataUrl=$(v).data('url');
-                    rederChart.push(_dataUrl);
-                });
-            }else if(typeof param=="object"&&param.length<chartNum){
-               param.forEach(function(v){
-                   var _dataUrl=$(".chartPulic").eq(v).data('url');
-                    rederChart.push(_dataUrl);
-                })
-            }
-            return rederChart;
-        })(renderType) ;
-        console.log(renderChartArr);
-        renderChartArr.forEach(function(v,i){
-            var url="./tpl/"+v;
-            //携带参数,重新load
-            //$("div[data-url='"+v+"']").load(url,obj);
-        })
-    };
-
-    var bindSearchEvent = function () {
-        var city = $("#city2").val(),
-            district = $("#district3").val(),
-            startTime = $("#startTime").val(),
-            endTime = $("#endTime").val();
-        if (1) {
-            var obj = {
-                city: city,
-                district: district,
+     * 3. 点击搜索按钮事件函数;
+     */
+    var bindSearchEvent = function (isFirst) {
+        var startTime = $("#startTime").val(),
+            endTime = $("#endTime").val(),
+            url1="test/oneStart.json",
+            url2="test/twoStart.json",
+            refChart1=["beachgspCharts","tanzhangpayCharts","beachBuildCharts","beachCountCharts"],
+            obj=null,
+            refChart2=["beachSearchCharts"];
+        if(isFirst){
+             obj = {
+                startTime:"",
+                endTime: ""
+            };
+        }else{
+            obj = {
                 startTime: startTime,
                 endTime: endTime
             };
- // 调用ajax 和后台交互
-            renderEvent([0],obj);
-        } else {
-            ms.msg("请输入完整的查询条件", 2, 2000);
+            $("#searchBtn").attr("disabled","true");
+        }
+        if($(".setting-icon").hasClass("flag")){
+            var _baseUrl="";
+            $(".mytpl>a").each(function(i,v){
+               if($(v).hasClass('active')){
+                    _baseUrl=$(v).data("url");
+                    return false;
+               }
+            });
+            var _rendUrl = _baseUrl+'startTime='+obj.startTime+'&endTime='+obj.endTime;
+            $("#changeTab").attr("src",_rendUrl);
+            $("#searchBtn").removeAttr("disabled");
+        }else{
+           sendData(url1,url2,obj,refChart1,refChart2);
+           console.log(22)
+        }
+
+    };
+    /**
+     * 4. 封装ajax 请求事件函数;
+     */
+    var sendData=function(url1,url2,obj,refChart1,refChart2){
+        TL_ajax(url1,obj,"POST","chart",refChart1)
+            .done(function(content){
+                if(content.code==200){
+                    var data=content.data;
+                    for(var key in data){
+                        switch(key){
+                            case "beachgspCharts":
+                                var option=chartConfig()[key];
+                                var optionS=option.series;
+                                for(var i=0;i<optionS.length;i++){
+                                    optionS[i].data[0].value=100-data[key][i];
+                                    optionS[i].data[1].value=data[key][i];
+                                }
+                                if(beachgspChartsFlag){
+                                    chartInit(key,option,theme);
+                                    beachgspChartsFlag=false;
+                                }else {
+                                    var targetChart=findCharts([key])[0];
+                                    targetChart.setOption(option);
+                                }
+                                break;
+                            case "tanzhangpayCharts":
+                                var option=chartConfig()[key];
+                                var optionS=option.series;
+                                for(var i=0;i<optionS.length;i++){
+                                    optionS[i].data=data[key][i];
+                                }
+                                if(tanzhangpayChartsFlag){
+                                    chartInit(key,option,theme);
+                                    tanzhangpayChartsFlag=false;
+                                }else {
+                                    var targetChart=findCharts([key])[0];
+                                    targetChart.setOption(option);
+                                }
+                                break;
+                            case "beachBuildCharts":
+                                var option=chartConfig()[key];
+                                var optionS=option.series;
+                                for(var i=0;i<optionS.length;i++){
+                                    optionS[i].data=data[key][i];
+                                }
+                                if(beachBuildChartsFlag){
+                                    chartInit(key,option,theme);
+                                    beachBuildChartsFlag=false;
+                                }else {
+                                    var targetChart=findCharts([key])[0];
+                                    targetChart.setOption(option);
+                                }
+                                break;
+                            case "beachCountCharts":
+                                var option=chartConfig()[key];
+                                var optionS=option.series;
+                                for(var i=0;i<optionS.length;i++){
+                                    optionS[i].data=data[key];
+                                }
+                                if(beachCountChartsFlag){
+                                    chartInit(key,option,theme);
+                                    beachCountChartsFlag=false;
+                                }else {
+                                    var targetChart=findCharts([key])[0];
+                                    targetChart.setOption(option);
+                                }
+                                break;
+                        }
+                    }
+                    $("#searchBtn").removeAttr("disabled");
+                }
+            })
+            .fail(function(){
+                ms.msg("参数有误", 5, 2000)
+            });
+        TL_ajax(url2,obj,"POST","chart",refChart2)
+            .done(function(content){
+                var option=chartConfig()["beachSearchCharts"];
+                var optionS=option.series;
+                optionS[0].data=content.data['beachSearchCharts'];
+                if(beachSearchChartsFlag){
+                    chartInit("beachSearchCharts",option,theme);
+                    beachSearchChartsFlag=false;
+                }else {
+                    var targetChart=findCharts(['beachSearchCharts'])[0];
+                    targetChart.setOption(option);
+                }
+                $("#searchBtn").removeAttr("disabled");
+            })
+            .fail(function(){
+                ms.msg("参数有误", 5, 2000)
+            });
+    };
+    /**
+     * 5. 寻找到对应的chart 图表实例;
+     */
+    var findCharts=function (tar){
+        var chartShowName=tar;
+        var allChartLength=initChartsArr.length;
+        var arrAll=[];
+        if((typeof chartShowName)=="object"&&chartShowName.length==allChartLength){
+            for(var i=0;i<initChartsArr.length;i++) {
+                for (var key in initChartsArr[i]) {
+                    arrAll.push(initChartsArr[i][key]);
+                    continue;
+                }
+            }
+        }else{
+            for(var i=0;i<chartShowName.length;i++){
+                var findChart=chartShowName[i];
+                for(var j=0;j<initChartsArr.length;j++){
+                    for(var key in initChartsArr[j]){
+                        if(key==findChart){
+                            arrAll.push(initChartsArr[j][key]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return arrAll;
+    };
+    /**
+     * 6. ajax 的旋转图表;
+     */
+    var showOrHideLoading=function (tar,time) {
+        var targetChart=findCharts(tar);
+        targetChart.forEach(function(v){
+            if(time=="start"){
+                v.showLoading({
+                    test:"正在努力的读取数据中..."
+                });
+            }else if(time=="end"){
+                v.hideLoading();
+            }
+        })
+    };
+    /**
+     * 7.图表初始化的基础配置
+     * */
+    var chartConfig=function(){
+        return {
+            beachgspCharts:{
+                legend: {
+                    x : 'center',
+                    y:'10%',
+                    data :['椒江区完成率','黄岩区完成率','路桥区完成率','玉环市完成率','三门县完成率','天台县完成率','仙居县完成率','温岭市完成率','临海市完成率']
+                },
+                title : {
+                    text: '各地区公示牌完成进度',
+                    x: 'center',
+                    y:'10'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter:function(params){
+                        var name=params.series.data[1].name+"<br>";
+                        if(params["1"]=="other"){
+                            return name+(100-params['2'])+'%';
+                        }else{
+                            return name+params['2']+'%';
+                        }
+                    }
+                },
+                series : [
+                    {
+                        type : 'pie',
+                        center : ['18%', '42%'],
+                        radius : ['10%', '22%'],
+                        x: '0%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'椒江区完成率', value:0,itemStyle :{
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['40%', '42%'],
+                        radius : ['10%', '22%'],
+                        x:'20%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'黄岩区完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['62%', '42%'],
+                        radius :  ['10%', '22%'],
+                        x:'40%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'路桥区完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['84%', '42%'],
+                        radius :  ['10%', '22%'],
+                        x:'60%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'玉环市完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['30%', '64%'],
+                        radius : ['10%', '22%'],
+                        x: '0%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'三门县完成率', value:0,itemStyle :{
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['52%', '64%'],
+                        radius : ['10%', '22%'],
+                        x:'20%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'天台县完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['74%', '64%'],
+                        radius :  ['10%', '22%'],
+                        x:'40%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'仙居县完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['40%', '86%'],
+                        radius :  ['10%', '22%'],
+                        x:'60%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'温岭市完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    },
+                    {
+                        type : 'pie',
+                        center : ['64%', '86%'],
+                        radius :  ['10%', '22%'],
+                        x:'80%', // for funnel
+                        y:'40%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 100 - params.value + '%'
+                                    },
+                                    textStyle: {
+                                        baseline : 'top'
+                                    }
+                                }
+                            }
+                        },
+                        data : [
+                            {name:'other', value:0, itemStyle : {
+                                normal : {
+                                    color: '#ccc',
+                                    label : {
+                                        show : true,
+                                        position : 'center'
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(0,0,0,0)'
+                                }
+                            }},
+                            {name:'临海市完成率', value:0,itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        formatter : '{b}',
+                                        textStyle: {
+                                            baseline : 'bottom'
+                                        }
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    }
+                                }
+                            }}
+                        ]
+                    }
+                ]
+            },
+            tanzhangpayCharts:{
+                title : {
+                    text: '滩涂治理完成率',
+                    x:'center',
+                    y:'6'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        type: 'shadow',
+                        lineStyle: {
+                            color: '#48b',
+                            width: 2,
+                            type: 'solid'
+                        },
+                        crossStyle: {
+                            color: '#1e90ff',
+                            width: 1,
+                            type: 'dashed'
+                        },
+                        shadowStyle: {
+                            color: 'rgba(150,150,150,0.3)',
+                            width: 'auto',
+                            type: 'default'
+                        }
+                    }
+                },
+                legend: {
+                    origent:'vertical',
+                    x:'center',
+                    y:'34',
+                    itemGap:8,
+                    data:['非法占用海滩','非法修、造、拆船舶监管','违禁渔具','非法占用、破坏海岸线','"三无"渔船','入海排污口'],
+                    selected: {
+                        '非法修、造、拆船舶监管' : false,
+                        '非法占用、破坏海岸线' : false,
+                        '入海排污口' : false
+                    }
+                },
+                calculable : true,
+                grid:{
+                    x:'14%',
+                    y:'24%',
+                    x2:36,
+                    y2:40
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : true,
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'非法占用海滩',
+                        type:'bar',
+                        data: []
+                    },
+                    {
+                        name:'非法修、造、拆船舶监管',
+                        type:'bar',
+                        data:[]
+
+                    },
+                    {
+                        name:'非法占用、破坏海岸线',
+                        type:'bar',
+                        data: []
+
+                    },
+                    {
+                        name:'违禁渔具',
+                        type:'bar',
+                        data:[]
+
+                    },
+                    {
+                        name:'"三无"渔船',
+                        type:'bar',
+                        data:[]
+
+                    },
+                    {
+                        name:'入海排污口',
+                        type:'bar',
+                        data:[]
+                    }
+                ]
+            },
+            beachSearchCharts:{
+                title : {
+                    text: '滩涂巡查完成率',
+                    x:'center',
+                    y:'10'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer:{
+                        type: 'shadow',
+                        lineStyle: {
+                            color: '#48b',
+                            width: 2,
+                            type: 'solid'
+                        },
+                        crossStyle: {
+                            color: '#1e90ff',
+                            width: 1,
+                            type: 'dashed'
+                        },
+                        shadowStyle: {
+                            color: 'rgba(150,150,150,0.3)',
+                            width: 'auto',
+                            type: 'default'
+                        }
+                    },
+                    formatter:"{b}<br>{a}:{c}%"
+                },
+                legend: {
+                    data:['完成率'],
+                    color:'red',
+                    x:'center',
+                    y:'34'
+                },
+                calculable : true,
+                grid:{
+                    x:'10%',
+                    y:'24%',
+                    x2:40,
+                    y2:30
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name:"百分比",
+                        nameLocation:'end',
+                        nameTextStyle:{
+                            color:'#f00'
+                        },
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'完成率',
+                        type:'bar',
+                        data:[],
+                        itemStyle:{
+                            normal:{
+                                color:function(params){
+                                    if(params.series.data){
+                                        var colorList = ['#26C0C0','#B5C334'];
+                                        var dataArr=params.series.data;
+                                        var total=0,averageTotal=0;
+                                        for(var i=0;i<dataArr.length;i++){
+                                            total+=dataArr[i];
+                                        }
+                                        averageTotal=(total/dataArr.length).toFixed(2);
+                                        if(params.data>averageTotal||params.data==averageTotal){
+                                            return colorList[0];
+                                        }else{
+                                            return colorList[1];
+                                        }
+                                    }
+                                    return 'red';
+                                },
+                                label:{
+                                    show:false
+                                }
+                            },
+                            emphasis:{
+                                label:{
+                                    show:true
+                                }
+                            }
+                        },
+                        markPoint : {
+                            itemStyle:{
+                                normal:{
+                                    color:function(params){
+                                        var colorList = [ '#27727B','#E87C25'];
+                                        if(params.data.type=='max'){
+                                            return colorList[0];
+                                        }else{
+                                            return colorList[1];
+                                        }
+                                    }
+                                }
+                            },
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            precision:2,
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ],
+                            itemStyle:{
+                                normal:{
+                                    borderColor:'red',
+                                    lineStyle:{
+                                        color:'red'
+                                    },
+                                    label:{
+                                        textStyle:{
+                                            color:'red'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            beachBuildCharts:{
+                title : {
+                    text: '滩长组织建设',
+                    x:'center',
+                    y:'10'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    x:'center',
+                    y:'36',
+                    data:["市级","县级","镇级"]
+                },
+                toolbox: {
+                    show : false,
+                    orient:'vertical',
+                    x:'right',
+                    y:'center',
+                    feature : {
+                        mark : {show: false},
+                        dataView : {show: true, readOnly: true},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                grid:{
+                    x:'14%',
+                    y:'24%',
+                    x2:30,
+                    y2:30
+                },
+                xAxis : [
+                    {
+                        type : 'value',
+                        name:'人数',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'category',
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                    }
+                ],
+                series : [
+                    {
+                        name:'市级',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[]
+                    },
+                    {
+                        name:'县级',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:  []
+                    },
+                    {
+                        name:'镇级',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data: []
+                    }
+                ]
+            },
+            beachCountCharts:{
+                title : {
+                    text: '滩涂底数',
+                    x:'center',
+                    y:'10'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: "{a} <br/>{b} : {c}%"
+                },
+                legend: {
+                    data:['完整率'],
+                    orient : 'vertical',
+                    x : 'center',
+                    y:'34'
+                },
+                grid:{
+                    x:'10%',
+                    y:'24%',
+                    x2:36,
+                    y2:40
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : true,
+                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name:'百分比',
+                        boundaryGap:[0,0.02]
+                    }
+                ],
+                series : [
+                    {
+                        name:'完整率',
+                        type:'line',
+                        data:[],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            precision:2,
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+
+                ]
+            }
         }
     };
     /**
-     * 4.主题切换
-     * */
-    var bindSetThemeEvent = function () {
-        $(".chartPulic").each(function (i, v) {
-            var _dataUrl=$(v).data('url');
-            var _url = "./tpl/"+_dataUrl;
-            if ($(v).hasClass("flag")) {
-                $(v).load(_url);
-                $(v).removeClass('flag');
-                return false;
-            }
-        });
-        var _dataUrl=$(this).data('url');
-        var _url = "./tpl/"+_dataUrl;
-        //$(this).load("./tpl/chart2.html");//模拟的加载路径（自己）
-        $(this).addClass('flag');
+     * 8. 图表初始化;
+     */
+    var chartInit=function (id,option,theme) {
+        var name=id,obj={};
+        id=echarts.init(document.getElementById(id),theme);
+        id.setOption(option);
+        obj[name]=id;
+        initChartsArr.push(obj);
+        if(initChartNameArr.indexOf(name)==-1){
+            initChartNameArr.push(name);
+        }
+        window.onresize = id.resize;
     };
     /**
-     * 5.图表初始化
-     * */
-    var initChartLoad=function () {
-        resetHeight(".specialItem1", 'left', 0.4);
-        resetHeight(".specialItem2", 'right', '0.4');
+     * 3. 初始化图表高度;
+     */
+    var initHeight=function () {
+        resetHeight(".page-container",".specialItem1", 'left', 0.5,2,3);
+        resetHeight(".page-container",".specialItem2", 'right', 0.3333,2,3);
         addControlBar();
-        $(".chartPulic").each(function (i, v) {
-            var _dataUrl=$(v).data('url');
-            var _url = "./tpl/"+_dataUrl;
-            $(v).load(_url);
-        });
     };
     $(function () {
         /**
          * 绑定具体的函数操作
          * 1.初始化粒子动画
          * 2.初始化datepicker
-         * 3.初始化整体高度布局的设置
-         * 4.初始化操作面板
-         * 5.获取全局的options对象
+         * 3.初始化整体高度布局的设置(初始化操作面板)
+         * 4.第一次初始化加载
          */
         var configHeader = {
             vx: 4,	//小球x轴速度,正为右，负为左
             vy: 4,	//小球y轴速度
             height: 2,	//小球高宽，其实为正方形，所以不宜太大
             width: 2,
-            count: 100,		//点个数
+            count: 20,		//点个数
             color: "255, 255, 255", 	//点颜色
             stroke: "255,255,255", 		//线条颜色
             dist: 6000, 	//点吸附距离
@@ -617,23 +1551,21 @@
             var endTime = e.date;
             $('#startTime').datetimepicker('setEndDate', endTime);
         });
-        $("#distpicker").distpicker({
-            province: "浙江省",
-            city: '台州市',
-            district: '-所有地区-',
-            autoSelect: false,
-            placeholder: true
-        });
-        initChartLoad();
+        initHeight();
+        bindSearchEvent("first");
         $(".setting-icon").on("click", bindScaleIconEvent);
-        $(".silderBar-panel").on('click', "a.list-group-item", bindItemChangeEvent);
-        $("#searchBtn").on('click', bindSearchEvent);
-        $(".chartPulic").on('click', bindSetThemeEvent);
+        $(".silderBar-panel").on('click',"a.list-group-item",bindItemChangeEvent);
+        $("#searchBtn").on('click',function(){bindSearchEvent()});
         $(".silderBar-panel").on("mouseenter mouseleave",".list-group-item",function (e) {
             $(this).toggleClass("animated pulse");
         });
-        $(window).resize(function() {
-            initChartLoad();
+        $(window).resize(function(){
+            initHeight();
+          initChartsArr.forEach(function(v){
+             for(var key in v){
+                 v[key].resize();
+             }
+          })
         })
     });
 </script>
