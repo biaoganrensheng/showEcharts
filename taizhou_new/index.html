@@ -66,6 +66,9 @@
         .list-group.mytpl>a:last-child{
           border-radius: 0;
         }
+        .list-group.mytpl>a:hover,.list-group.mytpl>a:target{
+            cursor: pointer;
+        }
         #beachgspCharts, #beachSearchCharts {
             border-top-color: transparent;
         }
@@ -212,7 +215,7 @@
                                                         <input name="startTime" type="text"
                                                                class="form-control date-picker" id="startTime"
                                                                style="width:100%;padding-right:0;"
-                                                               value="2017-11-15">
+                                                               value="">
                                                         <span class="caret arrowPositionChild"></span>
                                                     </div>
                                                 </div>
@@ -225,7 +228,7 @@
                                                         <input name="endTime" type="text" id="endTime"
                                                                class="form-control date-picker" id="endTime"
                                                                style="width:100%;padding-right:0;"
-                                                               value="2017-11-15">
+                                                               value="">
                                                         <span class="caret arrowPositionChild"></span>
                                                     </div>
                                                     <button type="button"  class="btn btn-success btn-md btn-block"
@@ -243,7 +246,26 @@
                             <!--模板-->
                             <div class="panel-body silderBar-panel" id="silderBar-panel"
                                  style="background-color: #000;">
-
+                                <div class="list-group mytpl">
+                                    <a  class="list-group-item" data-url="mapshow.html?type=illegal&">
+                                        非法占用海滩专项
+                                    </a>
+                                    <a class="list-group-item" data-url="mapshow.html?type=repair&">
+                                        非法修、造、拆船舶监管专项
+                                    </a>
+                                    <a  class="list-group-item" data-url="mapshow.html?type=violate&">
+                                        违禁渔具专项
+                                    </a>
+                                    <a  class="list-group-item" data-url="mapshow.html?type=destroy&">
+                                        非法占用、破坏海岸线专项
+                                    </a>
+                                    <a class="list-group-item" data-url="mapshow.html?type=three&">
+                                        三无渔船专项
+                                    </a>
+                                    <a  class="list-group-item" data-url="mapshow.html?type=sewage&">
+                                        入海排污口专项
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -274,7 +296,8 @@
 </div>
 <!-- 全局js -->
 <script src="plugins/jquery.min.js?v=2.1.4"></script>
-<script src="dist/echarts-all.js"></script>
+<!--<script src="dist/echarts-all.js"></script>-->
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 <script src="dist/dark.js"></script>
 <script src="plugins/bootstrap.min.js?v=3.3.6"></script>
 <script src="dist/canvas-particle.js"></script>
@@ -283,59 +306,33 @@
 <script src="plugins/distpicker.data.js"></script>
 <script src="plugins/distpicker.js"></script>
 <script src="plugins/public_alert.js"></script>
-<script src="plugins/baiduTemplate.js"></script>
 <!-- ECharts单文件引入 -->
-<script id="silderBarControl" type="text/html">
-    <%if(res==1){%>
-    <div class="list-group mytpl">
-        <%for(var i=0;i
-        <list.length
-        ;i++){%>
-        <a href="javascript:;" class="list-group-item" data-url="<%=list[i].url%>">
-            <%=list[i].content%>
-            <%if(list[i].badge){%>
-            <span class="badge">
-                  <%=list[i].badge%>
-              </span>
-            <%}%>
-         </a>
-        <%}%>
-    </div>
-    <%}%>
-</script>
 
 <script>
     var initChartsArr=[],theme=Dark,
+        desint=false,
         beachgspChartsFlag=true,
         tanzhangpayChartsFlag=true,
         beachBuildChartsFlag=true,
         beachCountChartsFlag=true,
         beachSearchChartsFlag=true,
         initChartNameArr=[];
-    function addControlBar() {
+    function initHeight() {
+        if(desint){$("#silderBar-panel").mCustomScrollbar("destroy")}
+        resetHeight(".page-container",".specialItem1", 'left', 0.5,2,3);
+        resetHeight(".page-container",".specialItem2", 'right', 0.3333,2,3);
         var _baseH = $(".page-container").height();
         var _panelH = (_baseH - ($("#panelHeight").outerHeight())) * .9;
         $("#silderBar-panel").css({
             'maxHeight': _panelH
         });
-        var url = "test/silderBar.json";
-        TL_ajax(url,{},'GET')
-            .done(function (data) {
-                /*模板渲染*/
-                BaiDuTpl("silderBarControl", "silderBar-panel", data);
-                /*初始化滚动条插件*/
-                $("#silderBar-panel").mCustomScrollbar({
-                    scrollButtons: {
-                        enable: true
-                    },
-                    theme: "dark-thin"
-                });
-                $(".mytpl>a").eq("0").addClass("active");
-                /*初始化加载的地图*/
-                var initUrl = data.list[0].url;
-                $("#changeTab").attr('src', initUrl);
-            })
-
+        $("#silderBar-panel").mCustomScrollbar({
+            scrollButtons: {
+                enable: true
+            },
+            theme: "dark-thin"
+        });
+        desint=true;
     }
 
     function resetHeight(page,dom, part, per, sliceleft, sliceright) {
@@ -361,12 +358,6 @@
 
     }
 
-    function BaiDuTpl(tplId, domId, data) {
-        var bt = baidu.template;
-        var html = bt('silderBarControl', data);
-        document.getElementById('silderBar-panel').innerHTML = html;
-    }
-
     /**
      *
      * 工具类*/
@@ -381,11 +372,12 @@
      * @param  {[num]} reqTime [设置超时时间]
      *
      */
+
     var TL_ajax = function (reqUrl, reqData, reqType, myChart,targetCharts,resType, contentType, reqTime) {
         var AJAX = $.ajax({
             url: reqUrl,
             type: reqType || "GET",
-            dataType: resType || "json",
+            dataType: resType ||"json",
             data: reqData || {},
             crossDomain: true,
             contentType: contentType || "application/x-www-form-urlencoded",
@@ -417,6 +409,11 @@
             $(".changeIcon").removeClass("glyphicon-resize-small").addClass('glyphicon-resize-full');
             $(this).removeClass("flag");
             $(".list-group").removeClass("oneClick");
+            initChartsArr.forEach(function(v){
+                for(var key in v){
+                    v[key].resize();
+                }
+            })
         } else {
             $(this).addClass("flag");
             $(".list-group").addClass("oneClick");
@@ -452,8 +449,10 @@
     var bindSearchEvent = function (isFirst) {
         var startTime = $("#startTime").val(),
             endTime = $("#endTime").val(),
-            url1="test/oneStart.json",
-            url2="test/twoStart.json",
+            //url1='http://localhost:8080/beach_tz/analysis/charts',
+             url1="test/oneStart.json",
+             url2="test/twoStart.json",
+            //url2='http://192.168.0.198:8080/beach_tz/mobileData/dataCount',
             refChart1=["beachgspCharts","tanzhangpayCharts","beachBuildCharts","beachCountCharts"],
             obj=null,
             refChart2=["beachSearchCharts"];
@@ -481,8 +480,16 @@
             $("#changeTab").attr("src",_rendUrl);
             $("#searchBtn").removeAttr("disabled");
         }else{
+            var d1 = new Date(startTime.replace(/\-/g, "\/"));
+            var d2 = new Date(endTime.replace(/\-/g, "\/"));
+            if(d1>d2)
+            {
+                ms.msg("开始时间不能大于结束时间！",2, 3000);
+                $("#searchBtn").removeAttr("disabled");
+                return false;
+            }
            sendData(url1,url2,obj,refChart1,refChart2);
-           console.log(22)
+           //console.log(obj)
         }
 
     };
@@ -492,7 +499,7 @@
     var sendData=function(url1,url2,obj,refChart1,refChart2){
         TL_ajax(url1,obj,"POST","chart",refChart1)
             .done(function(content){
-                if(content.code==200){
+            if(content.code==200){
                     var data=content.data;
                     for(var key in data){
                         switch(key){
@@ -559,24 +566,26 @@
                 }
             })
             .fail(function(){
-                ms.msg("参数有误", 5, 2000)
+                ms.msg("发生错误", 5, 2000)
             });
         TL_ajax(url2,obj,"POST","chart",refChart2)
             .done(function(content){
-                var option=chartConfig()["beachSearchCharts"];
-                var optionS=option.series;
-                optionS[0].data=content.data['beachSearchCharts'];
-                if(beachSearchChartsFlag){
-                    chartInit("beachSearchCharts",option,theme);
-                    beachSearchChartsFlag=false;
-                }else {
-                    var targetChart=findCharts(['beachSearchCharts'])[0];
-                    targetChart.setOption(option);
+                if(content.code==200){
+                    var option=chartConfig()["beachSearchCharts"];
+                    var optionS=option.series;
+                    optionS[0].data=content.data['beachSearchCharts'];
+                    if(beachSearchChartsFlag){
+                        chartInit("beachSearchCharts",option,theme);
+                        beachSearchChartsFlag=false;
+                    }else {
+                        var targetChart=findCharts(['beachSearchCharts'])[0];
+                        targetChart.setOption(option);
+                    }
+                    $("#searchBtn").removeAttr("disabled");
                 }
-                $("#searchBtn").removeAttr("disabled");
             })
             .fail(function(){
-                ms.msg("参数有误", 5, 2000)
+                ms.msg("发生错误", 5, 2000)
             });
     };
     /**
@@ -616,7 +625,7 @@
         targetChart.forEach(function(v){
             if(time=="start"){
                 v.showLoading({
-                    test:"正在努力的读取数据中..."
+                   /* test:"正在努力的读取数据中..."*/
                 });
             }else if(time=="end"){
                 v.hideLoading();
@@ -632,7 +641,7 @@
                 legend: {
                     x : 'center',
                     y:'10%',
-                    data :['椒江区完成率','黄岩区完成率','路桥区完成率','玉环市完成率','三门县完成率','天台县完成率','仙居县完成率','温岭市完成率','临海市完成率']
+                    data :['椒江区完成率','路桥区完成率','玉环市完成率','三门县完成率','温岭市完成率','临海市完成率']
                 },
                 title : {
                     text: '各地区公示牌完成进度',
@@ -644,9 +653,9 @@
                     formatter:function(params){
                         var name=params.series.data[1].name+"<br>";
                         if(params["1"]=="other"){
-                            return name+(100-params['2'])+'%';
+                            return name+(100-params['2']).toFixed(2)+'%';
                         }else{
-                            return name+params['2']+'%';
+                            return name+(params['2']).toFixed(2)+'%';
                         }
                     }
                 },
@@ -661,7 +670,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -704,58 +713,7 @@
                     },
                     {
                         type : 'pie',
-                        center : ['40%', '42%'],
-                        radius : ['10%', '22%'],
-                        x:'20%', // for funnel
-                        y:'40%',
-                        itemStyle : {
-                            normal : {
-                                label : {
-                                    formatter : function (params){
-                                        return 100 - params.value + '%'
-                                    },
-                                    textStyle: {
-                                        baseline : 'top'
-                                    }
-                                }
-                            }
-                        },
-                        data : [
-                            {name:'other', value:0, itemStyle : {
-                                normal : {
-                                    color: '#ccc',
-                                    label : {
-                                        show : true,
-                                        position : 'center'
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                },
-                                emphasis: {
-                                    color: 'rgba(0,0,0,0)'
-                                }
-                            }},
-                            {name:'黄岩区完成率', value:0,itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        formatter : '{b}',
-                                        textStyle: {
-                                            baseline : 'bottom'
-                                        }
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                }
-                            }}
-                        ]
-                    },
-                    {
-                        type : 'pie',
-                        center : ['62%', '42%'],
+                        center : ['52%', '42%'],
                         radius :  ['10%', '22%'],
                         x:'40%', // for funnel
                         y:'40%',
@@ -763,7 +721,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -814,7 +772,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -857,7 +815,7 @@
                     },
                     {
                         type : 'pie',
-                        center : ['30%', '64%'],
+                        center : ['34%', '64%'],
                         radius : ['10%', '22%'],
                         x: '0%', // for funnel
                         y:'40%',
@@ -865,7 +823,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -908,109 +866,7 @@
                     },
                     {
                         type : 'pie',
-                        center : ['52%', '64%'],
-                        radius : ['10%', '22%'],
-                        x:'20%', // for funnel
-                        y:'40%',
-                        itemStyle : {
-                            normal : {
-                                label : {
-                                    formatter : function (params){
-                                        return 100 - params.value + '%'
-                                    },
-                                    textStyle: {
-                                        baseline : 'top'
-                                    }
-                                }
-                            }
-                        },
-                        data : [
-                            {name:'other', value:0, itemStyle : {
-                                normal : {
-                                    color: '#ccc',
-                                    label : {
-                                        show : true,
-                                        position : 'center'
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                },
-                                emphasis: {
-                                    color: 'rgba(0,0,0,0)'
-                                }
-                            }},
-                            {name:'天台县完成率', value:0,itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        formatter : '{b}',
-                                        textStyle: {
-                                            baseline : 'bottom'
-                                        }
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                }
-                            }}
-                        ]
-                    },
-                    {
-                        type : 'pie',
-                        center : ['74%', '64%'],
-                        radius :  ['10%', '22%'],
-                        x:'40%', // for funnel
-                        y:'40%',
-                        itemStyle : {
-                            normal : {
-                                label : {
-                                    formatter : function (params){
-                                        return 100 - params.value + '%'
-                                    },
-                                    textStyle: {
-                                        baseline : 'top'
-                                    }
-                                }
-                            }
-                        },
-                        data : [
-                            {name:'other', value:0, itemStyle : {
-                                normal : {
-                                    color: '#ccc',
-                                    label : {
-                                        show : true,
-                                        position : 'center'
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                },
-                                emphasis: {
-                                    color: 'rgba(0,0,0,0)'
-                                }
-                            }},
-                            {name:'仙居县完成率', value:0,itemStyle : {
-                                normal : {
-                                    label : {
-                                        show : true,
-                                        position : 'center',
-                                        formatter : '{b}',
-                                        textStyle: {
-                                            baseline : 'bottom'
-                                        }
-                                    },
-                                    labelLine : {
-                                        show : false
-                                    }
-                                }
-                            }}
-                        ]
-                    },
-                    {
-                        type : 'pie',
-                        center : ['40%', '86%'],
+                        center : ['70%', '64%'],
                         radius :  ['10%', '22%'],
                         x:'60%', // for funnel
                         y:'40%',
@@ -1018,7 +874,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -1061,7 +917,7 @@
                     },
                     {
                         type : 'pie',
-                        center : ['64%', '86%'],
+                        center : ['50%', '86%'],
                         radius :  ['10%', '22%'],
                         x:'80%', // for funnel
                         y:'40%',
@@ -1069,7 +925,7 @@
                             normal : {
                                 label : {
                                     formatter : function (params){
-                                        return 100 - params.value + '%'
+                                        return (100 - params.value).toFixed(2) + '%'
                                     },
                                     textStyle: {
                                         baseline : 'top'
@@ -1162,7 +1018,7 @@
                     {
                         type : 'category',
                         boundaryGap : true,
-                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                        data : ['椒江区','路桥区','玉环市','三门县','温岭市','临海市']
                     }
                 ],
                 yAxis : [
@@ -1252,7 +1108,7 @@
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                        data : ['椒江区','路桥区','玉环市','三门县','温岭市','临海市']
                     }
                 ],
                 yAxis : [
@@ -1355,7 +1211,7 @@
                 legend: {
                     x:'center',
                     y:'36',
-                    data:["市级","县级","镇级"]
+                    data:["县级","镇级","村级"]
                 },
                 toolbox: {
                     show : false,
@@ -1386,18 +1242,14 @@
                 ],
                 yAxis : [
                     {
+                        axisLabel:{
+                            margin:14
+                        },
                         type : 'category',
-                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                        data : ['椒江区','路桥区','玉环市','三门县','温岭市','临海市']
                     }
                 ],
                 series : [
-                    {
-                        name:'市级',
-                        type:'bar',
-                        stack: '总量',
-                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
-                        data:[]
-                    },
                     {
                         name:'县级',
                         type:'bar',
@@ -1411,6 +1263,13 @@
                         stack: '总量',
                         itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
                         data: []
+                    },
+                    {
+                        name:'村级',
+                        type:'bar',
+                        stack: '总量',
+                        itemStyle : { normal: {label : {show: true, position: 'insideRight'}}},
+                        data:[]
                     }
                 ]
             },
@@ -1440,7 +1299,7 @@
                     {
                         type : 'category',
                         boundaryGap : true,
-                        data : ['椒江区','黄岩区','路桥区','玉环市','三门县','天台县','仙居县','温岭市','临海市']
+                        data : ['椒江区','路桥区','玉环市','三门县','温岭市','临海市']
 
                     }
                 ],
@@ -1489,12 +1348,47 @@
         window.onresize = id.resize;
     };
     /**
-     * 3. 初始化图表高度;
+     * 9.初始化图表高度并且触发第一次的点击;
      */
-    var initHeight=function () {
-        resetHeight(".page-container",".specialItem1", 'left', 0.5,2,3);
-        resetHeight(".page-container",".specialItem2", 'right', 0.3333,2,3);
-        addControlBar();
+    var triggerControl=function () {
+        initHeight();
+        $(".mytpl>a").eq("0").addClass("active");
+        /*初始化加载的地图*/
+        var initUrl = $(".mytpl>a").eq("0").data("url");
+        $("#changeTab").attr('src', initUrl);
+        bindSearchEvent("first");
+    };
+    /**
+     * 10. 初始化上个月时间;
+     */
+    //格式化日期：yyyy-MM-dd
+    var formatDate=function(date) {
+        var myyear = date.getFullYear();
+        var mymonth = date.getMonth()+1;
+        var myweekday = date.getDate();
+
+        if(mymonth < 10){
+            mymonth = "0" + mymonth;
+        }
+        if(myweekday < 10){
+            myweekday = "0" + myweekday;
+        }
+        return (myyear+"-"+mymonth + "-" + myweekday);
+    };
+    //获得上月开始,结束时间
+    var getLastMonthStartDate=function (){
+        var now = new Date(); //当前日期
+        var nowYear = now.getYear(); //当前年
+        nowYear += (nowYear < 2000) ? 1900 : 0; //
+        var lastMonthDate = new Date(); //上月日期
+        lastMonthDate.setDate(1);
+        lastMonthDate.setMonth(lastMonthDate.getMonth()-1);
+        var lastMonth = lastMonthDate.getMonth();
+        var days = (new Date(nowYear, lastMonth + 1, 1) - new Date(nowYear, lastMonth, 1))/(1000 * 60 * 60 * 24);
+
+        var lastMonthStartDate = new Date(nowYear, lastMonth, 1);
+        var lastMonthEndDate = new Date(nowYear, lastMonth, days);
+        return [formatDate(lastMonthStartDate),formatDate(lastMonthEndDate)];
     };
     $(function () {
         /**
@@ -1551,8 +1445,10 @@
             var endTime = e.date;
             $('#startTime').datetimepicker('setEndDate', endTime);
         });
-        initHeight();
-        bindSearchEvent("first");
+        var initDate=getLastMonthStartDate();
+        $("#startTime").val(initDate[0]);
+        $("#endTime").val(initDate[1]);
+        triggerControl();
         $(".setting-icon").on("click", bindScaleIconEvent);
         $(".silderBar-panel").on('click',"a.list-group-item",bindItemChangeEvent);
         $("#searchBtn").on('click',function(){bindSearchEvent()});
@@ -1561,12 +1457,17 @@
         });
         $(window).resize(function(){
             initHeight();
-          initChartsArr.forEach(function(v){
-             for(var key in v){
-                 v[key].resize();
-             }
-          })
-        })
+            if(!($(".setting-icon").hasClass("flag"))){
+                initChartsArr.forEach(function(v){
+                    for(var key in v){
+                        v[key].resize();
+                    }
+                })
+            }
+        });
+
+
+
     });
 </script>
 </body>
